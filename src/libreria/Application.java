@@ -12,21 +12,26 @@ public class Application {
 
 	private Connector c;
 	private String rutaInput, rutaOutput;
+	private Tipo t;
 
 	public Application(Tipo t, String rutaInput, String rutaOutput) {
 		
 		this.setRutaInput(rutaInput);
 		this.setRutaOutput(rutaOutput);
+		this.t = t;
 		
 		switch (t) {
 		case Entrada:
-			c = new Connector(this, new EntryPort());
+			c = new Connector(this);
+			c.setP(new EntryPort(c));
 			break;
 		case Salida:
-			c = new Connector(this, new ExitPort());
+			c = new Connector(this);
+			c.setP(new ExitPort(c));
 			break;
 		case Sol:
-			c = new Connector(this, new SolPort());
+			c = new Connector(this);
+			c.setP(new SolPort(c));
 			break;
 
 		default:
@@ -57,6 +62,14 @@ public class Application {
 
 	public void setRutaOutput(String rutaOutput) {
 		this.rutaOutput = rutaOutput;
+	}
+
+	public Tipo getTipo() {
+		return t;
+	}
+
+	public void setTipo(Tipo t) {
+		this.t = t;
 	}
 
 }

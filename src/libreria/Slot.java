@@ -2,6 +2,7 @@ package libreria;
 
 public class Slot {
 	private Port portEntrada, portSalida;
+	private Task taskEntrada, taskSalida;
 
 	public Port getPortEntrada() {
 		return portEntrada;
@@ -34,7 +35,5 @@ public class Slot {
 	public void setTaskSalida(Task taskSalida) {
 		this.taskSalida = taskSalida;
 	}
-
-	private Task taskEntrada, taskSalida;
 
 }

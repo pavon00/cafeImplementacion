@@ -1,9 +1,15 @@
 package libreria.port;
 
+import libreria.Connector;
 import libreria.Port;
 import libreria.Slot;
 
 public class SolPort extends Port {
+	public SolPort(Connector connector) {
+		super(connector);
+		// TODO Auto-generated constructor stub
+	}
+
 	private Slot inputSlot, outputSlot;
 
 	public Slot getInputSlot() {

@@ -8,11 +8,13 @@ import java.io.PrintWriter;
 
 import libreria.port.Message;
 
-public class Port {
+public abstract class Port {
 	private Message m;
+	private Connector con;
 	
-	public Port() {
-		this.m = new Message();
+	public Port(Connector connector) {
+		this.m = new Message(connector);
+		this.con = connector;
 	}
 
 	public String getBuffer() {
@@ -77,6 +79,14 @@ public class Port {
 				e2.printStackTrace();
 			}
 		}
+	}
+
+	public Connector getConnector() {
+		return con;
+	}
+
+	public void setConnector(Connector con) {
+		this.con = con;
 	}
 	
 }

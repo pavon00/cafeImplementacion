@@ -35,7 +35,7 @@ public class Process {
 		}
 	}
 
-	public void anyadirSlot(ArrayList<Task> tasks, Port port) {
+	public void anyadirSlot(Task[] tasks, Port port) {
 		if (tasks != null && port != null) {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Task t : tasks) {
@@ -50,7 +50,7 @@ public class Process {
 		}
 	}
 
-	public void anyadirSlot(Task task, ArrayList<Port> ports) {
+	public void anyadirSlot(Task task, Port[] ports) {
 		if (task != null && ports != null) {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Port p : ports) {
@@ -65,13 +65,43 @@ public class Process {
 		}
 	}
 
-	public void anyadirSlot(ArrayList<Port> ports, Task task) {
+	public void anyadirSlot(Port[] ports, Task task) {
 		if (task != null && ports != null) {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Port p : ports) {
 				if (p != null) {
 					Slot s = new Slot();
 					s.setPortEntrada(p);
+					s.setTaskSalida(task);
+					slots.add(s);
+				}
+			}
+			this.listaSlots.add(slots);
+		}
+	}
+
+	public void anyadirSlot(Task task, Task[] tasks) {
+		if (task != null && tasks != null) {
+			List<Slot> slots = new ArrayList<Slot>();
+			for (Task t : tasks) {
+				if (t != null) {
+					Slot s = new Slot();
+					s.setTaskSalida(t);
+					s.setTaskEntrada(task);
+					slots.add(s);
+				}
+			}
+			this.listaSlots.add(slots);
+		}
+	}
+
+	public void anyadirSlot(Task[] tasks, Task task) {
+		if (task != null && tasks != null) {
+			List<Slot> slots = new ArrayList<Slot>();
+			for (Task t : tasks) {
+				if (t != null) {
+					Slot s = new Slot();
+					s.setTaskEntrada(t);
 					s.setTaskSalida(task);
 					slots.add(s);
 				}

@@ -1,6 +1,8 @@
 package libreria.port;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 
@@ -25,10 +27,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import libreria.Connector;
+
 public class Message {
 	// esta clase tiene el buffer de datos
 
 	private String buffer;
+	private Connector con;
+
+	public Message(Connector con) {
+		this.setCon(con);
+	}
 
 	public Message() {
 		this.buffer = "";
@@ -47,7 +56,113 @@ public class Message {
 		return this.buffer;
 	}
 
-	public static Document convertStringToDocument(String xmlStr) throws ParserConfigurationException, SAXException, IOException {
+	public static String getXML(String ruta, String xPathExpression) {
+		try {
+			// Carga del documento xml
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document documento = builder.parse(new File(ruta));
+
+			XPath xPath = XPathFactory.newInstance().newXPath();
+			XPathExpression exp = xPath.compile(xPathExpression);
+
+			NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
+			String buffer = "";
+			for (int i = 0; i < nl.getLength(); i++) {
+				Node node = nl.item(i);
+				StringWriter buf = new StringWriter();
+				Transformer xform = TransformerFactory.newInstance().newTransformer();
+				xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+				xform.transform(new DOMSource(node), new StreamResult(buf));
+				buffer = buffer + buf.toString();
+			}
+			return buffer;
+
+		} catch (Exception e) {
+			return "";
+		}
+	}
+
+	public void readFile() {
+		this.buffer = getXML(con.getApp().getRutaInput(), "/");
+	}
+
+	public boolean writeFile(String parent) {
+		return writeFile(this.buffer, con.getApp().getRutaOutput(), "/", parent);
+	}
+
+	public static boolean isValid(String buffer, String xPathExpression, String parentNode) {
+		try {
+			Document documento = Message.convertStringToDocument(buffer);
+			// Preparación de xpath
+			XPath xPath = XPathFactory.newInstance().newXPath();
+
+			// Consultas
+			xPath.evaluate(xPathExpression, documento, XPathConstants.NODESET);
+			return true;
+
+		} catch (Exception e) {
+			try {
+				Document documento = Message.convertStringToDocument(Message.putPadre(parentNode, buffer));
+				// Preparación de xpath
+				xPathExpression = "drinks/drink";
+				XPath xPath = XPathFactory.newInstance().newXPath();
+
+				// Consultas
+				xPath.evaluate(xPathExpression, documento, XPathConstants.NODESET);
+				return true;
+			} catch (Exception e1) {
+				return false;
+			}
+		}
+	}
+
+	public static boolean writeFile(String buffer, String ruta, String xPathExpression, String parentNode) {
+		try {
+			if (isValid(buffer, xPathExpression, parentNode)) {
+				// Carga del documento xml
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				Document documento = builder.parse(new File(ruta));
+
+				XPath xPath = XPathFactory.newInstance().newXPath();
+				XPathExpression exp = xPath.compile(xPathExpression);
+
+				NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
+				System.out.println("Found " + nl.getLength() + " results");
+
+				for (int i = 0; i < nl.getLength(); i++) {
+					Node node = nl.item(i);
+					StringWriter buf = new StringWriter();
+					Transformer xform = TransformerFactory.newInstance().newTransformer();
+					xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+					xform.transform(new DOMSource(node), new StreamResult(buf));
+					buffer = buffer + buf.toString();
+				}
+				writeFile(ruta, buffer);
+				return true;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return false;
+	}
+
+	public static void writeFile(String ruta, String texto) throws IOException {
+		// attach a file to FileWriter
+		FileWriter fw = new FileWriter("output.txt");
+
+		// read character wise from string and write
+		// into FileWriter
+		for (int i = 0; i < texto.length(); i++)
+			fw.write(texto.charAt(i));
+
+		// close the file
+		fw.close();
+	}
+
+	public static Document convertStringToDocument(String xmlStr)
+			throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		StringBuilder xmlStringBuilder = new StringBuilder();
@@ -56,7 +171,8 @@ public class Message {
 		return builder.parse(input);
 	}
 
-	public String convertDocumentToString(Document documento) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
+	public String convertDocumentToString(Document documento) throws ParserConfigurationException, SAXException,
+			IOException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
 		XPath xPath = XPathFactory.newInstance().newXPath();
 		XPathExpression exp = xPath.compile("/");
 		NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
@@ -73,13 +189,22 @@ public class Message {
 		}
 		return buffer;
 	}
-	
-	public void documentToString(Document documento) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
+
+	public void documentToString(Document documento) throws XPathExpressionException, ParserConfigurationException,
+			SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
 		this.buffer = convertDocumentToString(documento);
 	}
-	
+
 	public static String putPadre(String padre, String xml) {
-		return "<"+padre+">"+xml+"</"+padre+">";
+		return "<" + padre + ">" + xml + "</" + padre + ">";
+	}
+
+	public Connector getCon() {
+		return con;
+	}
+
+	public void setCon(Connector con) {
+		this.con = con;
 	}
 
 }

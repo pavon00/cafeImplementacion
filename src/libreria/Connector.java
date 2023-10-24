@@ -4,9 +4,8 @@ public class Connector {
 	private Application app;
 	private Port p;
 
-	public Connector(Application app, Port p) {
+	public Connector(Application app) {
 		this.app = app;
-		this.p = p;
 	}
 
 	public Application getApp() {
