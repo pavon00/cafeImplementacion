@@ -8,28 +8,12 @@ public abstract class Task {
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	private boolean terminado;
 	
-	Task(){
+	public Task(){
 		this.p = Process.getInstance();
 		this.slotsEntrada = new ArrayList<Slot>();
 		this.slotsSalida = new ArrayList<Slot>();
 		this.setTerminado(false);
 	}
-	
-	public void anyadirASlotsEntrada(Slot... elementos) {
-        this.slotsEntrada = new ArrayList<Slot>();
-        for (Slot elemento : elementos) {
-        	slotsEntrada.add(elemento);
-        	elemento.setTaskSalida(this);
-        }
-    }
-	
-	public void anyadirASlotsSalida(Slot... elementos) {
-        this.slotsSalida = new ArrayList<Slot>();
-        for (Slot elemento : elementos) {
-        	slotsSalida.add(elemento);
-        	elemento.setTaskEntrada(this);
-        }
-    }
 	
 	public void anyadirSlotEntrada(Slot s) {
 		this.slotsEntrada.add(s);

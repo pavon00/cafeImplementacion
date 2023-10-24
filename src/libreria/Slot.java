@@ -26,6 +26,7 @@ public class Slot {
 
 	public void setTaskEntrada(Task taskEntrada) {
 		this.taskEntrada = taskEntrada;
+		taskEntrada.anyadirSlotSalida(this);
 	}
 
 	public Task getTaskSalida() {
@@ -34,6 +35,7 @@ public class Slot {
 
 	public void setTaskSalida(Task taskSalida) {
 		this.taskSalida = taskSalida;
+		taskSalida.anyadirSlotEntrada(this);
 	}
 
 }

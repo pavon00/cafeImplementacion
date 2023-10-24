@@ -1,5 +1,7 @@
 package libreria.task;
 
-public class Router {
+import libreria.Task;
+
+public class Router extends Task{
 
 }
