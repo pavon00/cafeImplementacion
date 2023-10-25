@@ -9,6 +9,13 @@ public class ExitPort extends Port {
 		super(connector);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public void run() {
+		// esperar slot entrada;
+		super.run();
+		this.escribirFichero();
+	}
 
 	private Slot inputSlot;
 	

@@ -10,6 +10,38 @@ public class Slot {
 
 	private Port portEntrada, portSalida;
 	private Task taskEntrada, taskSalida;
+	
+	public void ejecutar() {
+		if (portEntrada != null) {
+			portEntrada.run();
+		}
+		if (portSalida != null) {
+			portSalida.run();
+		}
+		if (taskEntrada != null) {
+			taskEntrada.run();
+		}
+		if (taskSalida != null) {
+			taskSalida.run();
+		}
+	}
+	
+	public boolean hayPortSalida() {
+		return portSalida != null;
+	}
+	
+	public boolean hayTaskSalida() {
+		return taskSalida != null;
+	}
+	
+	public void esperar() throws InterruptedException {
+		if (portEntrada !=null) {
+			portEntrada.join();
+		}
+		if (taskEntrada != null) {
+			taskEntrada.join();
+		}
+	}
 
 	Slot(Port portEntrada, Task taskSalida) throws ParserConfigurationException, SAXException, IOException {
 		this.setPortEntrada(portEntrada);
@@ -32,6 +64,7 @@ public class Slot {
 
 	private void setPortEntrada(Port portEntrada) {
 		this.portEntrada = portEntrada;
+		portEntrada.setSlotSalida(this);
 	}
 
 	public Port getPortSalida() {
@@ -40,6 +73,7 @@ public class Slot {
 
 	private void setPortSalida(Port portSalida) {
 		this.portSalida = portSalida;
+		portSalida.setSlotEntrada(this);
 	}
 
 	public Task getTaskEntrada() {

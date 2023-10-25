@@ -4,25 +4,62 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.xpath.XPathExpressionException;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 import libreria.port.Message;
 
-public abstract class Port {
+public abstract class Port extends Thread {
 	private Message m;
 	private Connector con;
-	
+	private Slot slotEntrada, slotSalida;
+
+	@Override
+	public void run() {
+		//esperar slot entrada
+		if (slotEntrada != null && slotSalida != null) {
+			try {
+				esperarNodosEntrada();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void esperarNodosEntrada() throws InterruptedException {
+		if (slotEntrada != null) {
+			slotEntrada.esperar();
+		}
+	}
+
 	public Port(Connector connector) {
 		this.m = new Message(connector);
 		this.con = connector;
 	}
 
-	public String getBuffer() {
+	public String getBufferString() {
 		return m.getBuffer();
 	}
+	
+	public Document getBuffer() throws ParserConfigurationException, SAXException, IOException {
+		return Util.convertStringToDocument(m.getBuffer());
+	}
 
-	public void setBuffer(String m) {
+	public void setBufferString(String m) {
 		this.m.setBuffer(m);
+	}
+
+	public void setBuffer(Document m) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
+		this.m.setBuffer(Util.convertDocumentToString(m));
 	}
 
 	public void leerFichero() {
@@ -32,7 +69,7 @@ public abstract class Port {
 	public void escribirFichero() {
 		escribirFichero(con.getApp().getRutaOutput(), this);
 	}
-	
+
 	public static void escribirFichero(String ruta, Port port) {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
@@ -53,7 +90,7 @@ public abstract class Port {
 			}
 		}
 	}
-	
+
 	public static void leerFichero(String ruta, Port port) {
 		// hace uso de fichero para escribir en buffer de port
 		File archivo = null;
@@ -72,7 +109,7 @@ public abstract class Port {
 			String linea = "";
 			while ((linea = br.readLine()) != null)
 				stringFichero = stringFichero + linea;
-			port.setBuffer(stringFichero);
+			port.setBufferString(stringFichero);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -96,5 +133,21 @@ public abstract class Port {
 	public void setConnector(Connector con) {
 		this.con = con;
 	}
-	
+
+	public Slot getSlotEntrada() {
+		return slotEntrada;
+	}
+
+	public void setSlotEntrada(Slot slotEntrada) {
+		this.slotEntrada = slotEntrada;
+	}
+
+	public Slot getSlotSalida() {
+		return slotSalida;
+	}
+
+	public void setSlotSalida(Slot slotSalida) {
+		this.slotSalida = slotSalida;
+	}
+
 }

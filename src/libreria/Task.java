@@ -2,32 +2,52 @@ package libreria;
 
 import java.util.ArrayList;
 
-public abstract class Task {
+public abstract class Task extends Thread {
 
 	private Process p;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	private boolean terminado;
 	private String buffer;
-	
-	public Task(){
+
+	public Task() {
+		this.buffer = "";
 		this.p = Process.getInstance();
 		this.slotsEntrada = new ArrayList<Slot>();
 		this.slotsSalida = new ArrayList<Slot>();
 		this.setTerminado(false);
 	}
+
+	@Override
+	public void run() {
+		//esperar a los nodos de entrada
+		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
+			try {
+				esperarNodosEntrada();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	
+	public void esperarNodosEntrada() throws InterruptedException {
+		for (Slot slotEntrada : slotsEntrada) {
+			slotEntrada.esperar();
+		}
+	}
+
 	public void anyadirSlotEntrada(Slot s) {
 		this.slotsEntrada.add(s);
 	}
-	
+
 	public void anyadirSlotSalida(Slot s) {
 		this.slotsSalida.add(s);
 	}
-	
+
 	public boolean eliminarSlotEntrada(Slot s) {
 		return this.slotsEntrada.remove(s);
 	}
-	
+
 	public boolean eliminarSlotSalida(Slot s) {
 		return this.slotsSalida.remove(s);
 	}
@@ -71,5 +91,5 @@ public abstract class Task {
 	public void setBuffer(String buffer) {
 		this.buffer = buffer;
 	}
-	
+
 }

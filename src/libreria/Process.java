@@ -16,6 +16,15 @@ public class Process {
 	private Process() {
 		listaSlots = new ArrayList<List<Slot>>();
 	}
+	
+	public void ejecutar() {
+		for (List<Slot> list : listaSlots) {
+			for (Slot slot : list) {
+				slot.ejecutar();
+			}
+			
+		}
+	}
 
 	public static Process getInstance() {
 		if (INSTANCE == null) {
