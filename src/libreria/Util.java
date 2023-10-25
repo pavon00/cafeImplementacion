@@ -42,8 +42,6 @@ public class Util {
 		} catch (Exception e) {
 			try {
 				Document documento = convertStringToDocument(putPadre(parentNode, buffer));
-				// Preparación de xpath
-				xPathExpression = "drinks/drink";
 				XPath xPath = XPathFactory.newInstance().newXPath();
 
 				// Consultas
