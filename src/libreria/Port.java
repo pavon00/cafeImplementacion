@@ -20,6 +20,8 @@ import libreria.port.Message;
 public abstract class Port extends Thread {
 	private Message m;
 	private Connector con;
+	// si te confunde hay casos en los que no se usa algun slot
+	
 	private Slot slotEntrada, slotSalida;
 
 	@Override

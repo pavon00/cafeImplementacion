@@ -19,14 +19,6 @@ public abstract class Task extends Thread {
 
 	@Override
 	public void run() {
-		if (Process.ESPERAR) {
-			try {
-				sleep(1000);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
 		//esperar a los nodos de entrada
 		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
 			try {
@@ -36,6 +28,14 @@ public abstract class Task extends Thread {
 				e.printStackTrace();
 			}
 			System.out.println("Salir de espera, buffer: "+this.getBuffer());
+		}
+		if (Process.ESPERAR) {
+			try {
+				sleep(1000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	
