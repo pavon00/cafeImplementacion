@@ -10,7 +10,9 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.xml.sax.SAXException;
 
+import libreria.Port;
 import libreria.Slot;
+import libreria.Task;
 import libreria.Util;
 
 /*
@@ -34,14 +36,22 @@ public class Splitter extends Transformer{
 		ArrayList<String> bufferAux = null;
 		try {
 			bufferAux = Util.splitXmlStringToElement(this.getBuffer(), xPathExpression);
+			System.out.println(bufferAux);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		if (bufferAux != null) {
-			for (Slot slot : this.getSlotsEntrada()) {
+			for (Slot slot : this.getSlotsSalida()) {
 				for (String string : bufferAux) {
-					slot.getPortEntrada().setBufferString(string);
+					Task t = slot.getTaskSalida();
+					Port p = slot.getPortSalida();
+					if (t != null) {
+						t.setBuffer(string);
+					}
+					if (p != null) {
+						p.setBufferString(string);
+					}
 				}
 			}
 		}

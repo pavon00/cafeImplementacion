@@ -78,7 +78,7 @@ public abstract class Port extends Thread {
 			System.out.println("ruta "+ruta);
 			fichero = getFileWriteCreateFile(ruta);
 			pw = new PrintWriter(fichero);
-			pw.println(port.getBuffer());
+			pw.println(Util.convertDocumentToString(port.getBuffer(), "/"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

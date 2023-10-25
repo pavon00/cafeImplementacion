@@ -13,7 +13,7 @@ public class Main {
 		Splitter splitter = new Splitter("//drink");
 		Aggregator aggregator = new Aggregator("cafe_order");
 		Process p = Process.getInstance();
-		Process.ESPERAR = true;
+		Process.ESPERAR = false;
 		try {
 			p.anyadirSlot(order.getPort(), splitter);
 			p.anyadirSlot(splitter, aggregator);
