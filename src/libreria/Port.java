@@ -24,6 +24,14 @@ public abstract class Port {
 	public void setBuffer(String m) {
 		this.m.setBuffer(m);
 	}
+
+	public void leerFichero() {
+		leerFichero(con.getApp().getRutaInput(), this);
+	}
+
+	public void escribirFichero() {
+		escribirFichero(con.getApp().getRutaOutput(), this);
+	}
 	
 	public static void escribirFichero(String ruta, Port port) {
 		FileWriter fichero = null;

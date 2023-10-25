@@ -7,6 +7,7 @@ public abstract class Task {
 	private Process p;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	private boolean terminado;
+	private String buffer;
 	
 	public Task(){
 		this.p = Process.getInstance();
@@ -61,6 +62,14 @@ public abstract class Task {
 
 	public void setTerminado(boolean terminado) {
 		this.terminado = terminado;
+	}
+
+	public String getBuffer() {
+		return buffer;
+	}
+
+	public void setBuffer(String buffer) {
+		this.buffer = buffer;
 	}
 	
 }

@@ -1,8 +1,13 @@
 package libreria;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 public class Process {
 	private static Process INSTANCE;
@@ -20,14 +25,12 @@ public class Process {
 		return INSTANCE;
 	}
 
-	public void anyadirSlot(Port port, ArrayList<Task> tasks) {
+	public void anyadirSlot(Port port, ArrayList<Task> tasks) throws ParserConfigurationException, SAXException, IOException {
 		if (tasks != null && port != null) {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Task t : tasks) {
 				if (t != null) {
-					Slot s = new Slot();
-					s.setPortEntrada(port);
-					s.setTaskSalida(t);
+					Slot s = new Slot(port, t);
 					slots.add(s);
 				}
 			}
@@ -40,9 +43,7 @@ public class Process {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Task t : tasks) {
 				if (t != null) {
-					Slot s = new Slot();
-					s.setPortSalida(port);
-					s.setTaskEntrada(t);
+					Slot s = new Slot(t, port);
 					slots.add(s);
 				}
 			}
@@ -55,9 +56,7 @@ public class Process {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Port p : ports) {
 				if (p != null) {
-					Slot s = new Slot();
-					s.setPortSalida(p);
-					s.setTaskEntrada(task);
+					Slot s = new Slot(task, p);
 					slots.add(s);
 				}
 			}
@@ -65,14 +64,12 @@ public class Process {
 		}
 	}
 
-	public void anyadirSlot(Port[] ports, Task task) {
+	public void anyadirSlot(Port[] ports, Task task) throws ParserConfigurationException, SAXException, IOException {
 		if (task != null && ports != null) {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Port p : ports) {
 				if (p != null) {
-					Slot s = new Slot();
-					s.setPortEntrada(p);
-					s.setTaskSalida(task);
+					Slot s = new Slot(p, task);
 					slots.add(s);
 				}
 			}
@@ -85,9 +82,7 @@ public class Process {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Task t : tasks) {
 				if (t != null) {
-					Slot s = new Slot();
-					s.setTaskSalida(t);
-					s.setTaskEntrada(task);
+					Slot s = new Slot(task, t);
 					slots.add(s);
 				}
 			}
@@ -100,9 +95,7 @@ public class Process {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Task t : tasks) {
 				if (t != null) {
-					Slot s = new Slot();
-					s.setTaskEntrada(t);
-					s.setTaskSalida(task);
+					Slot s = new Slot(t, task);
 					slots.add(s);
 				}
 			}

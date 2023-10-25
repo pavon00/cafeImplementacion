@@ -20,7 +20,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import libreria.port.Message;
+import libreria.Util;
 
 public class XPathParserDemo {
 	public static void main(String[] args) {
@@ -83,7 +83,7 @@ public class XPathParserDemo {
 		}
 		NodeList nodos = null;
 		try {
-			Document documento = Message.convertStringToDocument(buffer);
+			Document documento = Util.convertStringToDocument(buffer);
 			// Preparación de xpath
 			xPathExpression = "drinks/drink";
 			XPath xPath = XPathFactory.newInstance().newXPath();
@@ -93,7 +93,7 @@ public class XPathParserDemo {
 
 		} catch (Exception e) {
 			try {
-				Document documento = Message.convertStringToDocument(Message.putPadre(parentNode, buffer));
+				Document documento = Util.convertStringToDocument(Util.putPadre(parentNode, buffer));
 				// Preparación de xpath
 				xPathExpression = "drinks/drink";
 				XPath xPath = XPathFactory.newInstance().newXPath();
