@@ -2,6 +2,7 @@ package main;
 
 import java.io.File;
 import java.io.StringWriter;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -81,6 +82,36 @@ public class XPathParserDemo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		ArrayList<String> buffers = new ArrayList<String>();
+		
+
+		try {
+			// Carga del documento xml
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document documento = builder.parse(new File(ruta));
+
+			XPath xPath = XPathFactory.newInstance().newXPath();
+			XPathExpression exp = xPath.compile(xPathExpression);
+
+			NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
+			System.out.println("Found " + nl.getLength() + " results");
+
+			for (int i = 0; i < nl.getLength(); i++) {
+				Node node = nl.item(i);
+				StringWriter buf = new StringWriter();
+				Transformer xform = TransformerFactory.newInstance().newTransformer();
+				xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+				xform.transform(new DOMSource(node), new StreamResult(buf));
+				buffers.add(buf.toString());
+				System.out.println("elemento "+i+": "+buf.toString());
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		NodeList nodos = null;
 		try {
 			Document documento = Util.convertStringToDocument(buffer);

@@ -12,8 +12,9 @@ import org.xml.sax.SAXException;
 public class Process {
 	private static Process INSTANCE;
 	private ArrayList<List<Slot>> listaSlots;
+	public static boolean ESPERAR;
 
-	private Process() {
+	public Process() {
 		listaSlots = new ArrayList<List<Slot>>();
 	}
 	
@@ -22,7 +23,6 @@ public class Process {
 			for (Slot slot : list) {
 				slot.ejecutar();
 			}
-			
 		}
 	}
 
@@ -34,7 +34,7 @@ public class Process {
 		return INSTANCE;
 	}
 
-	public void anyadirSlot(Port port, ArrayList<Task> tasks) throws ParserConfigurationException, SAXException, IOException {
+	public void anyadirSlot(Port port, Task[] tasks) throws ParserConfigurationException, SAXException, IOException {
 		if (tasks != null && port != null) {
 			List<Slot> slots = new ArrayList<Slot>();
 			for (Task t : tasks) {
@@ -86,6 +86,24 @@ public class Process {
 		}
 	}
 
+	public void anyadirSlot(Task task, Port port) {
+		if (task != null && port != null) {
+			List<Slot> slots = new ArrayList<Slot>();
+			Slot s = new Slot(task, port);
+			slots.add(s);
+			this.listaSlots.add(slots);
+		}
+	}
+
+	public void anyadirSlot(Port port, Task task) throws ParserConfigurationException, SAXException, IOException {
+		if (task != null && port != null) {
+			List<Slot> slots = new ArrayList<Slot>();
+			Slot s = new Slot(port, task);
+			slots.add(s);
+			this.listaSlots.add(slots);
+		}
+	}
+
 	public void anyadirSlot(Task task, Task[] tasks) {
 		if (task != null && tasks != null) {
 			List<Slot> slots = new ArrayList<Slot>();
@@ -111,29 +129,44 @@ public class Process {
 			this.listaSlots.add(slots);
 		}
 	}
+	
+	public void anyadirSlot(Task task1, Task task2) {
+		if (task1 != null && task2 != null) {
+			List<Slot> slots = new ArrayList<Slot>();
+			Slot s = new Slot(task1, task2);
+			slots.add(s);
+			this.listaSlots.add(slots);
+		}
+	}
 
-	public static List<Slot> crearLista(Slot... elementos) {
+	public static Slot[] crearArray(Slot... elementos) {
 		List<Slot> lista = new LinkedList<Slot>();
 		for (Slot elemento : elementos) {
 			lista.add(elemento);
 		}
-		return lista;
+		Slot[] array = new Slot[lista.size()];
+		lista.toArray(array); // fill the array
+		return array;
 	}
 
-	public static List<Task> crearLista(Task... elementos) {
+	public static Task[] crearArray(Task... elementos) {
 		List<Task> lista = new LinkedList<Task>();
 		for (Task elemento : elementos) {
 			lista.add(elemento);
 		}
-		return lista;
+		Task[] array = new Task[lista.size()];
+		lista.toArray(array); // fill the array
+		return array;
 	}
 
-	public static List<Port> crearLista(Port... elementos) {
+	public static Port[] crearArray(Port... elementos) {
 		List<Port> lista = new LinkedList<Port>();
 		for (Port elemento : elementos) {
 			lista.add(elemento);
 		}
-		return lista;
+		Port[] array = new Port[lista.size()];
+		lista.toArray(array); // fill the array
+		return array;
 	}
 
 }

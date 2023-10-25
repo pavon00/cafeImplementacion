@@ -24,7 +24,7 @@ public abstract class Port extends Thread {
 
 	@Override
 	public void run() {
-		//esperar slot entrada
+		// esperar slot entrada
 		if (slotEntrada != null && slotSalida != null) {
 			try {
 				esperarNodosEntrada();
@@ -49,7 +49,7 @@ public abstract class Port extends Thread {
 	public String getBufferString() {
 		return m.getBuffer();
 	}
-	
+
 	public Document getBuffer() throws ParserConfigurationException, SAXException, IOException {
 		return Util.convertStringToDocument(m.getBuffer());
 	}
@@ -58,8 +58,9 @@ public abstract class Port extends Thread {
 		this.m.setBuffer(m);
 	}
 
-	public void setBuffer(Document m) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
-		this.m.setBuffer(Util.convertDocumentToString(m));
+	public void setBuffer(Document m) throws XPathExpressionException, ParserConfigurationException, SAXException,
+			IOException, TransformerFactoryConfigurationError, TransformerException {
+		this.m.setBuffer(Util.convertDocumentToString(m, "/"));
 	}
 
 	public void leerFichero() {
@@ -74,7 +75,8 @@ public abstract class Port extends Thread {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		try {
-			fichero = new FileWriter(ruta);
+			System.out.println("ruta "+ruta);
+			fichero = getFileWriteCreateFile(ruta);
 			pw = new PrintWriter(fichero);
 			pw.println(port.getBuffer());
 		} catch (Exception e) {
@@ -89,6 +91,16 @@ public abstract class Port extends Thread {
 				e2.printStackTrace();
 			}
 		}
+	}
+
+	private static FileWriter getFileWriteCreateFile(String ruta) throws IOException {
+		File file = new File(ruta);
+		if (!file.exists()) {
+			file.createNewFile();
+		}
+
+		FileWriter f = new FileWriter(ruta);
+		return f;
 	}
 
 	public static void leerFichero(String ruta, Port port) {

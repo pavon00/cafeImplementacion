@@ -13,6 +13,26 @@ public class Application {
 	private Connector c;
 	private String rutaInput, rutaOutput;
 	private Tipo t;
+	
+	public Application(Tipo t, String ruta) {
+		this.t = t;
+		switch (t) {
+		case Entrada:
+			this.setRutaInput(ruta);
+			c = new Connector(this);
+			c.setP(new EntryPort(c));
+			break;
+			
+		case Salida:
+			this.setRutaOutput(ruta);
+			c = new Connector(this);
+			c.setP(new ExitPort(c));
+			break;
+
+		default:
+			break;
+		}
+	}
 
 	public Application(Tipo t, String rutaInput, String rutaOutput) {
 		
@@ -70,6 +90,10 @@ public class Application {
 
 	public void setTipo(Tipo t) {
 		this.t = t;
+	}
+	
+	public Port getPort() {
+		return this.c.getP();
 	}
 
 }

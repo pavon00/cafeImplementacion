@@ -91,7 +91,7 @@ public class Message {
 
 	public void documentToString(Document documento) throws XPathExpressionException, ParserConfigurationException,
 			SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
-		this.buffer = Util.convertDocumentToString(documento);
+		this.buffer = Util.convertDocumentToString(documento,"/");
 	}
 
 	public Connector getCon() {
