@@ -24,17 +24,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import libreria.Connector;
+import libreria.Port;
 import libreria.Util;
 
 public class Message {
 	// esta clase tiene el buffer de datos
 
 	private String buffer;
-	private Connector con;
+	private Port port;
 
-	public Message(Connector con) {
-		this.setCon(con);
+	public Message(Port port) {
+		this.setPort(port);
 	}
 
 	public Message() {
@@ -81,25 +81,17 @@ public class Message {
 		}
 	}
 
-	public void readFile() {
-		this.buffer = getXML(con.getApp().getRutaInput(), "/");
-	}
-
-	public boolean writeFile(String parent) {
-		return Util.writeFile(this.buffer, con.getApp().getRutaOutput(), "/", parent);
-	}
-
 	public void documentToString(Document documento) throws XPathExpressionException, ParserConfigurationException,
 			SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
 		this.buffer = Util.convertDocumentToString(documento,"/");
 	}
 
-	public Connector getCon() {
-		return con;
+	public Port getPort() {
+		return this.port;
 	}
 
-	public void setCon(Connector con) {
-		this.con = con;
+	public void setPort(Port port) {
+		this.port = port;
 	}
 
 }

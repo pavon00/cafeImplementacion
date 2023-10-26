@@ -1,15 +1,15 @@
 package main;
 
-import libreria.Application;
 import libreria.Process;
-import libreria.Application.Tipo;
+import libreria.Connector;
+import libreria.Connector.Tipo;
 import libreria.task.Aggregator;
 import libreria.task.Splitter;
 
 public class Main {
 	public static void main(String[] args) {
-		Application order = new Application(Tipo.Entrada, "order1.xml");
-		Application waiter = new Application(Tipo.Salida, "waiter.xml");
+		Connector order = new Connector(Tipo.Entrada, "order1.xml");
+		Connector waiter = new Connector(Tipo.Salida, "waiter.xml");
 		Splitter splitter = new Splitter("//drink");
 		Aggregator aggregator = new Aggregator("cafe_order");
 		Process p = Process.getInstance();

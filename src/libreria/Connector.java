@@ -1,27 +1,46 @@
 package libreria;
 
+import libreria.port.EntryPort;
+import libreria.port.ExitPort;
+import libreria.port.SolPort;
+
 public class Connector {
-	private Application app;
-	private Port p;
+	
+	public enum Tipo {
+		Entrada, Salida, Sol;
+	}
+	
+	private Port port;
 
-	public Connector(Application app) {
-		this.app = app;
+	public Connector(Tipo t, String ruta) {
+		
+		switch (t) {
+		case Entrada:
+			this.port = new EntryPort(ruta);
+			this.port.setConnector(this);
+			break;
+		case Salida:
+			this.port = new ExitPort(ruta);
+			this.port.setConnector(this);
+			break;
+		case Sol:
+			this.port = new SolPort(ruta);
+			this.port.setConnector(this);
+			break;
+
+		default:
+			break;
+		}
+
 	}
 
-	public Application getApp() {
-		return app;
+
+	public Port getPort() {
+		return port;
 	}
 
-	public void setApp(Application app) {
-		this.app = app;
-	}
-
-	public Port getP() {
-		return p;
-	}
-
-	public void setP(Port p) {
-		this.p = p;
+	public void setPort(Port p) {
+		this.port = p;
 	}
 
 }
