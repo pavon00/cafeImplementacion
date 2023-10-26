@@ -18,9 +18,6 @@ public class Slot {
 		if (portSalida != null) {
 			portSalida.run();
 		}
-		if (taskEntrada != null) {
-			taskEntrada.run();
-		}
 		if (taskSalida != null) {
 			taskSalida.run();
 		}
