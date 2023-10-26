@@ -1,22 +1,16 @@
-package libreria.task;
+package libreria.threader.task;
 
 import java.util.ArrayList;
 
 import libreria.Process;
 import libreria.Slot;
 
-/*
- * Añade contenido al cuerpo del mensaje de entrada a partir de la información de contexto ofrecida en la entrada “contexto”
- * Entradas: 2 (contexto y entrada), Salidas: 1
- * 
-*/
-
-public class ContextEnricher extends Modifier {
+public class Router extends Task{
 
 	private String buffer;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	
-	public ContextEnricher() {
+	public Router() {
 		this.slotsEntrada = new ArrayList<Slot>();
 		this.slotsSalida = new ArrayList<Slot>();
 	}
@@ -31,6 +25,7 @@ public class ContextEnricher extends Modifier {
 		// TODO Auto-generated method stub
 		return this.buffer;
 	}
+
 	
 	@Override
 	public void realizarAccion() {

@@ -1,17 +1,22 @@
-package libreria.task;
+package libreria.threader.task;
 
 import java.util.ArrayList;
 
 import libreria.Process;
 import libreria.Slot;
-import libreria.Task;
 
-public class Router extends Task{
+/*
+ * Distribuye los mensajes de entrada hacia las salidas
+ * Entradas: 1, Salidas: n
+ * 
+*/
+
+public class Replicator extends Router {
 
 	private String buffer;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	
-	public Router() {
+	public Replicator() {
 		this.slotsEntrada = new ArrayList<Slot>();
 		this.slotsSalida = new ArrayList<Slot>();
 	}
@@ -27,7 +32,6 @@ public class Router extends Task{
 		return this.buffer;
 	}
 
-	
 	@Override
 	public void realizarAccion() {
 		//esperar a los nodos de entrada
@@ -48,6 +52,9 @@ public class Router extends Task{
 				e1.printStackTrace();
 			}
 		}
+		for (Slot slot : this.slotsSalida) {
+			slot.setBufferString(this.getBufferString());
+		}
 		
 	}
 	
@@ -67,5 +74,4 @@ public class Router extends Task{
 	public void setSlotSalida(Slot s) {
 		this.slotsSalida.add(s);
 	}
-
 }

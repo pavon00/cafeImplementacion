@@ -1,4 +1,4 @@
-package libreria;
+package libreria.threader.port;
 
 import java.io.IOException;
 
@@ -10,9 +10,11 @@ import javax.xml.xpath.XPathExpressionException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import libreria.port.Message;
+import libreria.Connector;
+import libreria.Util;
+import libreria.threader.ThreaderAdapter;
 
-public abstract class Port extends EjecutableAdapter {
+public abstract class Port extends ThreaderAdapter {
 	private Message m;
 	private Connector con;
 	// si te confunde hay casos en los que no se usa algun slot

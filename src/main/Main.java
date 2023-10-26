@@ -3,8 +3,8 @@ package main;
 import libreria.Process;
 import libreria.Connector;
 import libreria.Connector.Tipo;
-import libreria.task.Aggregator;
-import libreria.task.Splitter;
+import libreria.threader.task.Aggregator;
+import libreria.threader.task.Splitter;
 
 public class Main {
 	public static void main(String[] args) {

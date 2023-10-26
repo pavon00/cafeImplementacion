@@ -1,8 +1,9 @@
 package libreria;
 
-import libreria.port.EntryPort;
-import libreria.port.ExitPort;
-import libreria.port.SolPort;
+import libreria.threader.port.EntryPort;
+import libreria.threader.port.ExitPort;
+import libreria.threader.port.Port;
+import libreria.threader.port.SolPort;
 
 public class Connector {
 	

@@ -6,9 +6,13 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import libreria.threader.ThreaderAdapter;
+import libreria.threader.port.Port;
+import libreria.threader.task.Task;
+
 public class Slot {
 
-	private EjecutableAdapter entrada, salida;
+	private ThreaderAdapter entrada, salida;
 
 	public void ejecutar() {
 		if (entrada != null) {
@@ -56,11 +60,11 @@ public class Slot {
 		this.setPortSalida(portSalida);
 	}
 
-	public EjecutableAdapter getEntrada() {
+	public ThreaderAdapter getEntrada() {
 		return entrada;
 	}
 
-	public EjecutableAdapter getSalida() {
+	public ThreaderAdapter getSalida() {
 		return salida;
 	}
 

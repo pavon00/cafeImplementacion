@@ -1,6 +1,4 @@
-package libreria.task;
-
-import libreria.Task;
+package libreria.threader.task;
 
 public abstract class Transformer extends Task{
 

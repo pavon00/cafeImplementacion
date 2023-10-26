@@ -1,6 +1,9 @@
-package libreria;
+package libreria.threader.task;
 
-public abstract class Task extends EjecutableAdapter {
+import libreria.Process;
+import libreria.threader.ThreaderAdapter;
+
+public abstract class Task extends ThreaderAdapter {
 
 	private Process p;
 	private boolean terminado;

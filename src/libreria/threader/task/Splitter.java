@@ -1,11 +1,9 @@
-package libreria.task;
+package libreria.threader.task;
 
 import java.util.ArrayList;
 
-import libreria.Port;
 import libreria.Process;
 import libreria.Slot;
-import libreria.Task;
 import libreria.Util;
 
 /*

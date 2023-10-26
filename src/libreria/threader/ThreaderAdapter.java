@@ -1,6 +1,8 @@
-package libreria;
+package libreria.threader;
 
-public abstract class EjecutableAdapter extends Thread{
+import libreria.Slot;
+
+public abstract class ThreaderAdapter extends Thread{
 	@Override
 	public void run() {
 		realizarAccion();

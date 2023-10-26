@@ -1,4 +1,4 @@
-package libreria.task;
+package libreria.threader.task;
 
 import java.util.ArrayList;
 
@@ -6,17 +6,17 @@ import libreria.Process;
 import libreria.Slot;
 
 /*
- * Distribuye los mensajes de entrada hacia las salidas
- * Entradas: 1, Salidas: n
+ * Añade contenido al cuerpo del mensaje de entrada a partir de la información de contexto ofrecida en la entrada “contexto”
+ * Entradas: 2 (contexto y entrada), Salidas: 1
  * 
 */
 
-public class Replicator extends Router {
+public class ContextEnricher extends Modifier {
 
 	private String buffer;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	
-	public Replicator() {
+	public ContextEnricher() {
 		this.slotsEntrada = new ArrayList<Slot>();
 		this.slotsSalida = new ArrayList<Slot>();
 	}
@@ -31,7 +31,7 @@ public class Replicator extends Router {
 		// TODO Auto-generated method stub
 		return this.buffer;
 	}
-
+	
 	@Override
 	public void realizarAccion() {
 		//esperar a los nodos de entrada
@@ -52,9 +52,6 @@ public class Replicator extends Router {
 				e1.printStackTrace();
 			}
 		}
-		for (Slot slot : this.slotsSalida) {
-			slot.setBufferString(this.getBufferString());
-		}
 		
 	}
 	
@@ -74,4 +71,5 @@ public class Replicator extends Router {
 	public void setSlotSalida(Slot s) {
 		this.slotsSalida.add(s);
 	}
+
 }

@@ -1,46 +1,30 @@
-package libreria.port;
+package libreria.threader.port;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import libreria.Port;
+
 import libreria.Slot;
 
-public class SolPort extends Port {
-
-	private Slot inputSlot, outputSlot;
+public class EntryPort extends Port {
+	private Slot outputSlot;
 	private String ruta;
 
-	public SolPort(String ruta) {
+	public EntryPort(String ruta){
 		this.ruta = ruta;
 	}
 
 	@Override
 	public void realizarAccion() {
-		// esperar slot entrada;
-		if (inputSlot != null) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		this.leerFichero();
 		outputSlot.setBufferString(getBufferString());
-	}
-
-	private void esperarNodosEntrada() throws InterruptedException {
-		if (inputSlot != null) {
-			inputSlot.esperar();
-		}
 	}
 
 	private void leerFichero() {
 		leerFichero(ruta, this);
 	}
 
-	public static void leerFichero(String ruta, Port port) {
+	private static void leerFichero(String ruta, Port port) {
 		// hace uso de fichero para escribir en buffer de port
 		File archivo = null;
 		FileReader fr = null;
@@ -58,6 +42,7 @@ public class SolPort extends Port {
 			String linea = "";
 			while ((linea = br.readLine()) != null)
 				stringFichero = stringFichero + linea;
+			System.out.println("Leido "+stringFichero);
 			port.setBufferString(stringFichero);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,30 +60,19 @@ public class SolPort extends Port {
 		}
 	}
 
-	public Slot getSlotEntrada() {
-		return inputSlot;
-	}
-
 	public Slot getSlotSalida() {
 		return outputSlot;
 	}
 
-	public String getRuta() {
-		return ruta;
-	}
-
-	public void setRuta(String ruta) {
-		this.ruta = ruta;
-	}
-
-	@Override
-	public void setSlotEntrada(Slot s) {
-		this.outputSlot = s;
-	}
 
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.outputSlot = s;
 	}
 
+	@Override
+	public void setSlotEntrada(Slot s) {
+		// TODO Auto-generated method stub
+		
+	}
 }

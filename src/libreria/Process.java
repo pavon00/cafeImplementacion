@@ -9,6 +9,9 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import libreria.threader.port.Port;
+import libreria.threader.task.Task;
+
 public class Process {
 	private static Process INSTANCE;
 	private ArrayList<List<Slot>> listaSlots;
