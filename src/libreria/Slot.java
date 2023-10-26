@@ -8,7 +8,7 @@ import org.xml.sax.SAXException;
 
 public class Slot {
 
-	private Ejecutable entrada, salida;
+	private EjecutableAdapter entrada, salida;
 
 	public void ejecutar() {
 		if (entrada != null) {
@@ -56,11 +56,11 @@ public class Slot {
 		this.setPortSalida(portSalida);
 	}
 
-	public Ejecutable getEntrada() {
+	public EjecutableAdapter getEntrada() {
 		return entrada;
 	}
 
-	public Ejecutable getSalida() {
+	public EjecutableAdapter getSalida() {
 		return salida;
 	}
 

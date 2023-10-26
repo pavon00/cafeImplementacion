@@ -1,6 +1,6 @@
 package libreria;
 
-public abstract class Task extends Ejecutable {
+public abstract class Task extends EjecutableAdapter {
 
 	private Process p;
 	private boolean terminado;

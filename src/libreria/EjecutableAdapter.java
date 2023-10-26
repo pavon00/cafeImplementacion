@@ -1,6 +1,6 @@
 package libreria;
 
-public abstract class Ejecutable extends Thread{
+public abstract class EjecutableAdapter extends Thread{
 	@Override
 	public void run() {
 		realizarAccion();

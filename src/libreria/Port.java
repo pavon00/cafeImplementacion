@@ -12,7 +12,7 @@ import org.xml.sax.SAXException;
 
 import libreria.port.Message;
 
-public abstract class Port extends Ejecutable {
+public abstract class Port extends EjecutableAdapter {
 	private Message m;
 	private Connector con;
 	// si te confunde hay casos en los que no se usa algun slot
