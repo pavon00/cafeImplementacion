@@ -48,7 +48,7 @@ public class Aggregator extends Transformer{
 	}
 	
 	@Override
-	public void setBuffer(String buffer) {
+	public void setBufferString(String buffer) {
 		System.out.println("elemento: "+buffer);
 		ArrayList<String> buffersAux = getBuffers();
 		buffersAux.add(buffer);

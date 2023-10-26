@@ -8,8 +8,7 @@ import org.xml.sax.SAXException;
 
 public class Slot {
 
-	private Port portEntrada, portSalida;
-	private Task taskEntrada, taskSalida;
+	private Ejecutable portEntrada, portSalida, taskEntrada, taskSalida;
 	
 	public void ejecutar() {
 		if (portEntrada != null) {
@@ -55,7 +54,7 @@ public class Slot {
 		this.setPortSalida(portSalida);
 	}
 
-	public Port getPortEntrada() {
+	public Ejecutable getPortEntrada() {
 		return portEntrada;
 	}
 
@@ -64,7 +63,7 @@ public class Slot {
 		portEntrada.setSlotSalida(this);
 	}
 
-	public Port getPortSalida() {
+	public Ejecutable getPortSalida() {
 		return portSalida;
 	}
 
@@ -73,7 +72,7 @@ public class Slot {
 		portSalida.setSlotEntrada(this);
 	}
 
-	public Task getTaskEntrada() {
+	public Ejecutable getTaskEntrada() {
 		return taskEntrada;
 	}
 
@@ -82,7 +81,7 @@ public class Slot {
 		taskEntrada.anyadirSlotSalida(this);
 	}
 
-	public Task getTaskSalida() {
+	public Ejecutable getTaskSalida() {
 		return taskSalida;
 	}
 

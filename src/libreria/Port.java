@@ -12,15 +12,10 @@ import org.xml.sax.SAXException;
 
 import libreria.port.Message;
 
-public abstract class Port extends Thread {
+public abstract class Port extends Ejecutable {
 	private Message m;
 	private Connector con;
 	// si te confunde hay casos en los que no se usa algun slot
-	
-	@Override
-	public void run() {
-		realizarAccion();
-	}
 
 	public Port() {
 		this.m = new Message(this);
@@ -43,10 +38,6 @@ public abstract class Port extends Thread {
 		this.m.setBuffer(Util.convertDocumentToString(m, "/"));
 	}
 	
-	public void realizarAccion() {
-		
-	}
-	
 	public void setSlotEntrada(Slot s) {
 		
 	}
@@ -62,4 +53,5 @@ public abstract class Port extends Thread {
 	public void setConnector(Connector con) {
 		this.con = con;
 	}
+
 }

@@ -2,6 +2,6 @@ package libreria.task;
 
 import libreria.Task;
 
-public class Transformer extends Task{
+public abstract class Transformer extends Task{
 
 }

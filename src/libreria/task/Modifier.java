@@ -2,6 +2,6 @@ package libreria.task;
 
 import libreria.Task;
 
-public class Modifier extends Task{
+public abstract class Modifier extends Task{
 
 }

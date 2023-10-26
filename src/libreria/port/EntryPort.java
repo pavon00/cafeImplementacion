@@ -27,7 +27,7 @@ public class EntryPort extends Port {
 		}
 		if (outputSlot.hayTaskSalida()) {
 			try {
-				outputSlot.getTaskSalida().setBuffer(getBufferString());
+				outputSlot.getTaskSalida().setBufferString(getBufferString());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

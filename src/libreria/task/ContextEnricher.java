@@ -6,13 +6,19 @@ package libreria.task;
  * 
 */
 
-public class ContextEnricher extends Modifier{
-	
+public class ContextEnricher extends Modifier {
+
+	private String buffer;
+
 	@Override
-	public void run() {
-		//esperar a los nodos de entrada
-		super.run();
-		
+	public void setBufferString(String bufferAux) {
+		this.buffer = bufferAux;
 	}
 	
+	@Override
+	public String getBuffer() {
+		// TODO Auto-generated method stub
+		return this.buffer;
+	}
+
 }

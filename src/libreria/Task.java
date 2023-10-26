@@ -2,7 +2,7 @@ package libreria;
 
 import java.util.ArrayList;
 
-public abstract class Task extends Thread {
+public abstract class Task extends Ejecutable {
 
 	private Process p;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
@@ -16,7 +16,7 @@ public abstract class Task extends Thread {
 	}
 
 	@Override
-	public void run() {
+	public void realizarAccion() {
 		//esperar a los nodos de entrada
 		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
 			try {

@@ -16,7 +16,7 @@ public class SolPort extends Port {
 	}
 
 	@Override
-	public void run() {
+	public void realizarAccion() {
 		// esperar slot entrada;
 		if (inputSlot != null) {
 			try {
@@ -37,7 +37,7 @@ public class SolPort extends Port {
 		}
 		if (outputSlot.hayTaskSalida()) {
 			try {
-				outputSlot.getTaskSalida().setBuffer(getBufferString());
+				outputSlot.getTaskSalida().setBufferString(getBufferString());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -114,15 +114,4 @@ public class SolPort extends Port {
 		this.ruta = ruta;
 	}
 
-	@Override
-	public void setSlotEntrada(Slot s) {
-		// TODO Auto-generated method stub
-		this.setInputSlot(s);
-	}
-
-	@Override
-	public void setSlotSalida(Slot s) {
-		// TODO Auto-generated method stub
-		this.setOutputSlot(s);
-	}
 }

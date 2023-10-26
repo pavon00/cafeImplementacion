@@ -6,6 +6,6 @@ package libreria.task;
  * 
 */
 
-public class Translator extends Transformer{
+public abstract class Translator extends Transformer{
 
 }

@@ -37,10 +37,10 @@ public class Splitter extends Transformer{
 		if (bufferAux != null) {
 			for (Slot slot : this.getSlotsSalida()) {
 				for (String string : bufferAux) {
-					Task t = slot.getTaskSalida();
-					Port p = slot.getPortSalida();
+					Task t = (Task) slot.getTaskSalida();
+					Port p = (Port) slot.getPortSalida();
 					if (t != null) {
-						t.setBuffer(string);
+						t.setBufferString(string);
 					}
 					if (p != null) {
 						p.setBufferString(string);
@@ -51,7 +51,7 @@ public class Splitter extends Transformer{
 	}
 	
 	@Override
-	public void setBuffer(String buffer) {
+	public void setBufferString(String buffer) {
 		// TODO Auto-generated method stub
 		this.buffer = buffer;
 	}
