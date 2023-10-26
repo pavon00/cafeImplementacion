@@ -37,14 +37,6 @@ public abstract class Port extends Ejecutable {
 			IOException, TransformerFactoryConfigurationError, TransformerException {
 		this.m.setBuffer(Util.convertDocumentToString(m, "/"));
 	}
-	
-	public void setSlotEntrada(Slot s) {
-		
-	}
-	
-	public void setSlotSalida(Slot s) {
-		
-	}
 
 	public Connector getConnector() {
 		return con;

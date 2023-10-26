@@ -8,34 +8,36 @@ import org.xml.sax.SAXException;
 
 public class Slot {
 
-	private Ejecutable portEntrada, portSalida, taskEntrada, taskSalida;
-	
+	private Ejecutable entrada, salida;
+
 	public void ejecutar() {
-		if (portEntrada != null) {
-			portEntrada.run();
+		if (entrada != null) {
+			entrada.run();
 		}
-		if (portSalida != null) {
-			portSalida.run();
-		}
-		if (taskSalida != null) {
-			taskSalida.run();
+		if (salida != null) {
+			if (salida.getClass().equals(Port.class)) {
+				salida.run();
+			}
 		}
 	}
-	
+
 	public boolean hayPortSalida() {
-		return portSalida != null;
-	}
-	
-	public boolean hayTaskSalida() {
-		return taskSalida != null;
-	}
-	
-	public void esperar() throws InterruptedException {
-		if (portEntrada !=null) {
-			portEntrada.join();
+		if (salida != null) {
+			return salida.getClass().equals(Port.class);
 		}
-		if (taskEntrada != null) {
-			taskEntrada.join();
+		return false;
+	}
+
+	public boolean hayTaskSalida() {
+		if (salida != null) {
+			return salida.getClass().equals(Task.class);
+		}
+		return false;
+	}
+
+	public void esperar() throws InterruptedException {
+		if (entrada != null) {
+			entrada.join();
 		}
 	}
 
@@ -54,40 +56,36 @@ public class Slot {
 		this.setPortSalida(portSalida);
 	}
 
-	public Ejecutable getPortEntrada() {
-		return portEntrada;
+	public Ejecutable getEntrada() {
+		return entrada;
+	}
+
+	public Ejecutable getSalida() {
+		return salida;
 	}
 
 	private void setPortEntrada(Port portEntrada) {
-		this.portEntrada = portEntrada;
 		portEntrada.setSlotSalida(this);
-	}
-
-	public Ejecutable getPortSalida() {
-		return portSalida;
+		this.entrada = portEntrada;
 	}
 
 	private void setPortSalida(Port portSalida) {
-		this.portSalida = portSalida;
 		portSalida.setSlotEntrada(this);
-	}
-
-	public Ejecutable getTaskEntrada() {
-		return taskEntrada;
+		this.salida = portSalida;
 	}
 
 	private void setTaskEntrada(Task taskEntrada) {
-		this.taskEntrada = taskEntrada;
-		taskEntrada.anyadirSlotSalida(this);
+		taskEntrada.setSlotSalida(this);
+		this.entrada = taskEntrada;
 	}
-
-	public Ejecutable getTaskSalida() {
-		return taskSalida;
+	
+	public void setBufferString(String string) {
+		this.salida.setBufferString(string);
 	}
 
 	private void setTaskSalida(Task taskSalida) {
-		this.taskSalida = taskSalida;
-		taskSalida.anyadirSlotEntrada(this);
+		taskSalida.setSlotEntrada(this);
+		this.salida = taskSalida;
 	}
 
 }

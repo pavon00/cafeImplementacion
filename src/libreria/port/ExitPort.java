@@ -97,5 +97,11 @@ public class ExitPort extends Port {
 		// TODO Auto-generated method stub
 		this.setInputSlot(s);
 	}
+
+	@Override
+	public void setSlotSalida(Slot s) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

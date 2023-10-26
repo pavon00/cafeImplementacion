@@ -27,22 +27,7 @@ public class SolPort extends Port {
 			}
 		}
 		this.leerFichero();
-		if (outputSlot.hayPortSalida()) {
-			try {
-				outputSlot.getPortSalida().setBufferString(getBufferString());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		if (outputSlot.hayTaskSalida()) {
-			try {
-				outputSlot.getTaskSalida().setBufferString(getBufferString());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		outputSlot.setBufferString(getBufferString());
 	}
 
 	private void esperarNodosEntrada() throws InterruptedException {
@@ -90,20 +75,12 @@ public class SolPort extends Port {
 		}
 	}
 
-	public Slot getInputSlot() {
+	public Slot getSlotEntrada() {
 		return inputSlot;
 	}
 
-	public void setInputSlot(Slot inputSlot) {
-		this.inputSlot = inputSlot;
-	}
-
-	public Slot getOutputSlot() {
+	public Slot getSlotSalida() {
 		return outputSlot;
-	}
-
-	public void setOutputSlot(Slot outputSlot) {
-		this.outputSlot = outputSlot;
 	}
 
 	public String getRuta() {
@@ -112,6 +89,16 @@ public class SolPort extends Port {
 
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
+	}
+
+	@Override
+	public void setSlotEntrada(Slot s) {
+		this.outputSlot = s;
+	}
+
+	@Override
+	public void setSlotSalida(Slot s) {
+		this.outputSlot = s;
 	}
 
 }

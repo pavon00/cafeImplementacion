@@ -3,6 +3,7 @@ package libreria.task;
 import java.util.ArrayList;
 
 import libreria.Port;
+import libreria.Process;
 import libreria.Slot;
 import libreria.Task;
 import libreria.Util;
@@ -14,40 +15,71 @@ import libreria.Util;
 */
 
 public class Splitter extends Transformer{
-	
-	private String xPathExpression;
+
 	private String buffer;
+	private ArrayList<Slot> slotsEntrada, slotsSalida;
+	private String xPathExpression;
 	
 	public Splitter(String xPathExpression){
 		this.setxPathExpression(xPathExpression);
+		this.slotsEntrada = new ArrayList<Slot>();
+		this.slotsSalida = new ArrayList<Slot>();
 	}
 
+	
 	@Override
-	public void run() {
+	public void realizarAccion() {
 		//esperar a los nodos de entrada
-		super.run();
+		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
+			try {
+				esperarNodosEntrada();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Salir de espera, buffer: "+this.getBufferString());
+		}
+		if (Process.ESPERAR) {
+			try {
+				sleep(1000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 		ArrayList<String> bufferAux = null;
 		try {
-			bufferAux = Util.splitXmlStringToElement(this.getBuffer(), xPathExpression);
+			bufferAux = Util.splitXmlStringToElement(this.getBufferString(), xPathExpression);
 			System.out.println(bufferAux);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		if (bufferAux != null) {
-			for (Slot slot : this.getSlotsSalida()) {
+			for (Slot slot : this.slotsSalida) {
 				for (String string : bufferAux) {
-					Task t = (Task) slot.getTaskSalida();
-					Port p = (Port) slot.getPortSalida();
-					if (t != null) {
-						t.setBufferString(string);
-					}
-					if (p != null) {
-						p.setBufferString(string);
-					}
+					slot.setBufferString(string);
 				}
 			}
 		}
+		
+	}
+	
+	public void esperarNodosEntrada() throws InterruptedException {
+		for (Slot slotEntrada : slotsEntrada) {
+			slotEntrada.esperar();
+		}
+	}
+	
+	@Override
+	public void setSlotEntrada(Slot s) {
+		this.slotsEntrada.add(s);
+		
+	}
+
+	@Override
+	public void setSlotSalida(Slot s) {
+		this.slotsSalida.add(s);
 	}
 	
 	@Override
@@ -57,7 +89,7 @@ public class Splitter extends Transformer{
 	}
 	
 	@Override
-	public String getBuffer() {
+	public String getBufferString() {
 		// TODO Auto-generated method stub
 		return this.buffer;
 	}

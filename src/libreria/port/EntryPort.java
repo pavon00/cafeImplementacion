@@ -17,22 +17,7 @@ public class EntryPort extends Port {
 	@Override
 	public void realizarAccion() {
 		this.leerFichero();
-		if (outputSlot.hayPortSalida()) {
-			try {
-				outputSlot.getPortSalida().setBufferString(getBufferString());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		if (outputSlot.hayTaskSalida()) {
-			try {
-				outputSlot.getTaskSalida().setBufferString(getBufferString());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		outputSlot.setBufferString(getBufferString());
 	}
 
 	private void leerFichero() {
@@ -57,6 +42,7 @@ public class EntryPort extends Port {
 			String linea = "";
 			while ((linea = br.readLine()) != null)
 				stringFichero = stringFichero + linea;
+			System.out.println("Leido "+stringFichero);
 			port.setBufferString(stringFichero);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,17 +60,19 @@ public class EntryPort extends Port {
 		}
 	}
 
-	public Slot getOutputSlot() {
+	public Slot getSlotSalida() {
 		return outputSlot;
 	}
 
-	public void setOutputSlot(Slot outputSlot) {
-		this.outputSlot = outputSlot;
-	}
 
 	@Override
 	public void setSlotSalida(Slot s) {
+		this.outputSlot = s;
+	}
+
+	@Override
+	public void setSlotEntrada(Slot s) {
 		// TODO Auto-generated method stub
-		this.setOutputSlot(s);
+		
 	}
 }

@@ -1,5 +1,8 @@
 package libreria.task;
 
+import java.util.ArrayList;
+
+import libreria.Process;
 import libreria.Slot;
 
 /*
@@ -9,27 +12,66 @@ import libreria.Slot;
 */
 
 public class Replicator extends Router {
-	
+
 	private String buffer;
+	private ArrayList<Slot> slotsEntrada, slotsSalida;
+	
+	public Replicator() {
+		this.slotsEntrada = new ArrayList<Slot>();
+		this.slotsSalida = new ArrayList<Slot>();
+	}
+
+	@Override
+	public void setBufferString(String bufferAux) {
+		this.buffer = bufferAux;
+	}
 	
 	@Override
-	public void run() {
-		// esperar a los nodos de entrada
-		super.run();
-		for (Slot slot : this.getSlotsSalida()) {
-			slot.getPortSalida().setBufferString(this.getBuffer());
+	public String getBufferString() {
+		// TODO Auto-generated method stub
+		return this.buffer;
+	}
+
+	@Override
+	public void realizarAccion() {
+		//esperar a los nodos de entrada
+		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
+			try {
+				esperarNodosEntrada();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Salir de espera, buffer: "+this.getBufferString());
+		}
+		if (Process.ESPERAR) {
+			try {
+				sleep(1000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		for (Slot slot : this.slotsSalida) {
+			slot.setBufferString(this.getBufferString());
+		}
+		
+	}
+	
+	public void esperarNodosEntrada() throws InterruptedException {
+		for (Slot slotEntrada : slotsEntrada) {
+			slotEntrada.esperar();
 		}
 	}
 	
 	@Override
-	public void setBuffer(String buffer) {
-		// TODO Auto-generated method stub
-		this.buffer = buffer;
+	public void setSlotEntrada(Slot s) {
+		this.slotsEntrada.add(s);
+		
 	}
-	
+
 	@Override
-	public String getBuffer() {
-		// TODO Auto-generated method stub
-		return this.buffer;
+	public void setSlotSalida(Slot s) {
+		this.slotsSalida.add(s);
 	}
 }
