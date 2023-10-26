@@ -11,7 +11,7 @@ import libreria.Slot;
  * 
 */
 
-public class ContextEnricher extends Modifier {
+public class ContextEnricher extends Task {
 
 	private String buffer;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;

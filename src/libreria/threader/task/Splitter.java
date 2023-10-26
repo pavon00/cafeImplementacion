@@ -12,7 +12,7 @@ import libreria.Util;
  * 
 */
 
-public class Splitter extends Transformer{
+public class Splitter extends Task{
 
 	private String buffer;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;

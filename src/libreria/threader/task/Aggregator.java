@@ -12,7 +12,7 @@ import libreria.Util;
  * 
 */
 
-public class Aggregator extends Transformer {
+public class Aggregator extends Task {
 
 	private String nodoPadre;
 	private ArrayList<String> buffers;

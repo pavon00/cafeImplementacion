@@ -11,7 +11,7 @@ import libreria.Slot;
  * 
 */
 
-public class Replicator extends Router {
+public class Replicator extends Task {
 
 	private String buffer;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
