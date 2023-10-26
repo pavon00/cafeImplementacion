@@ -7,10 +7,8 @@ public abstract class Task extends Thread {
 	private Process p;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	private boolean terminado;
-	private String buffer;
 
 	public Task() {
-		this.buffer = "";
 		this.p = Process.getInstance();
 		this.slotsEntrada = new ArrayList<Slot>();
 		this.slotsSalida = new ArrayList<Slot>();
@@ -94,11 +92,11 @@ public abstract class Task extends Thread {
 	}
 
 	public String getBuffer() {
-		return buffer;
+		return "";
 	}
 
 	public void setBuffer(String buffer) {
-		this.buffer = buffer;
+		
 	}
 
 }

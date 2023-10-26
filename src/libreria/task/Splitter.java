@@ -16,6 +16,7 @@ import libreria.Util;
 public class Splitter extends Transformer{
 	
 	private String xPathExpression;
+	private String buffer;
 	
 	public Splitter(String xPathExpression){
 		this.setxPathExpression(xPathExpression);
@@ -47,6 +48,18 @@ public class Splitter extends Transformer{
 				}
 			}
 		}
+	}
+	
+	@Override
+	public void setBuffer(String buffer) {
+		// TODO Auto-generated method stub
+		this.buffer = buffer;
+	}
+	
+	@Override
+	public String getBuffer() {
+		// TODO Auto-generated method stub
+		return this.buffer;
 	}
 
 	public String getxPathExpression() {
