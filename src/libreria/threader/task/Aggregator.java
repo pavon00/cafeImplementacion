@@ -14,14 +14,17 @@ import libreria.Util;
 
 public class Aggregator extends Task {
 
-	private String nodoPadre;
+	private ArrayList<String> nodoPadre;
 	private ArrayList<String> buffers;
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 
-	public Aggregator(String nodoPadre) {
+	public Aggregator(String... nodoPadre) {
+		this.nodoPadre = new ArrayList<String>();
 		this.slotsEntrada = new ArrayList<Slot>();
 		this.slotsSalida = new ArrayList<Slot>();
-		this.setNodoPadre(nodoPadre);
+		for (String string : nodoPadre) {
+			this.setNodoPadre(string);
+		}
 		setBuffers(new ArrayList<String>());
 	}
 
@@ -36,18 +39,18 @@ public class Aggregator extends Task {
 				e.printStackTrace();
 			}
 			System.out.println("Salir de espera, buffer: " + this.getBufferString());
-		}
-		if (Process.ESPERAR) {
-			try {
-				sleep(1000);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (Process.ESPERAR) {
+				try {
+					sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-		}
-		String bufferAux = aggregatorTarea();
-		for (Slot slot : this.slotsSalida) {
-			slot.setBufferString(bufferAux);
+			String bufferAux = aggregatorTarea();
+			for (Slot slot : this.slotsSalida) {
+				slot.setBufferString(bufferAux);
+			}
 		}
 	}
 
@@ -62,15 +65,20 @@ public class Aggregator extends Task {
 		for (String string : buffers) {
 			bufferAux = bufferAux + string;
 		}
-		return Util.putPadre(nodoPadre, bufferAux);
+		for (String string : nodoPadre) {
+			bufferAux = Util.putPadre(string, bufferAux);
+		}
+		return bufferAux;
 	}
 
-	public String getNodoPadre() {
+	public ArrayList<String> getNodoPadre() {
 		return nodoPadre;
 	}
 
-	public void setNodoPadre(String xPathExpression) {
-		this.nodoPadre = xPathExpression;
+	public void setNodoPadre(String... xPathExpression) {
+		for (String string : xPathExpression) {
+			this.nodoPadre.add(string);
+		}
 	}
 
 	@Override

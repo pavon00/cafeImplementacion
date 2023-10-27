@@ -43,17 +43,17 @@ public class Replicator extends Task {
 				e.printStackTrace();
 			}
 			System.out.println("Salir de espera, buffer: "+this.getBufferString());
-		}
-		if (Process.ESPERAR) {
-			try {
-				sleep(1000);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (Process.ESPERAR) {
+				try {
+					sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-		}
-		for (Slot slot : this.slotsSalida) {
-			slot.setBufferString(this.getBufferString());
+			for (Slot slot : this.slotsSalida) {
+				slot.setBufferString(this.getBufferString());
+			}
 		}
 		
 	}

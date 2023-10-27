@@ -11,7 +11,7 @@ public class Main {
 		Connector order = new Connector(Tipo.Entrada, "order1.xml");
 		Connector waiter = new Connector(Tipo.Salida, "waiter.xml");
 		Splitter splitter = new Splitter("//drink");
-		Aggregator aggregator = new Aggregator("cafe_order");
+		Aggregator aggregator = new Aggregator("drinks", "cafe_order");
 		Process p = Process.getInstance();
 		Process.ESPERAR = true;
 		try {

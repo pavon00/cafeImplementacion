@@ -36,27 +36,27 @@ public class Splitter extends Task{
 				e.printStackTrace();
 			}
 			System.out.println("Salir de espera, buffer: "+this.getBufferString());
-		}
-		if (Process.ESPERAR) {
-			try {
-				sleep(1000);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (Process.ESPERAR) {
+				try {
+					sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-		}
-		ArrayList<String> bufferAux = null;
-		try {
-			bufferAux = Util.splitXmlStringToElement(this.getBufferString(), xPathExpression);
-			System.out.println(bufferAux);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		if (bufferAux != null) {
-			for (Slot slot : this.slotsSalida) {
-				for (String string : bufferAux) {
-					slot.setBufferString(string);
+			ArrayList<String> bufferAux = null;
+			try {
+				bufferAux = Util.splitXmlStringToElement(this.getBufferString(), xPathExpression);
+				System.out.println(bufferAux);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			if (bufferAux != null) {
+				for (Slot slot : this.slotsSalida) {
+					for (String string : bufferAux) {
+						slot.setBufferString(string);
+					}
 				}
 			}
 		}
