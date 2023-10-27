@@ -1,9 +1,9 @@
 package libreria;
 
-import libreria.threader.port.EntryPort;
-import libreria.threader.port.ExitPort;
+import libreria.threader.port.FactoryEntryPort;
+import libreria.threader.port.FactoryExitPort;
+import libreria.threader.port.FactorySolPort;
 import libreria.threader.port.Port;
-import libreria.threader.port.SolPort;
 
 public class Connector {
 	
@@ -12,20 +12,25 @@ public class Connector {
 	}
 	
 	private Port port;
+	private FactoryEntryPort factoryEntryPort;
+	private FactoryExitPort factoryExitPort;
+	private FactorySolPort factorySolPort;
 
 	public Connector(Tipo t, String ruta) {
-		
 		switch (t) {
 		case Entrada:
-			this.port = new EntryPort(ruta);
+			factoryEntryPort = new FactoryEntryPort();
+			this.port = factoryEntryPort.crear(ruta);
 			this.port.setConnector(this);
 			break;
 		case Salida:
-			this.port = new ExitPort(ruta);
+			factoryExitPort = new FactoryExitPort();
+			this.port = factoryExitPort.crear(ruta);
 			this.port.setConnector(this);
 			break;
 		case Sol:
-			this.port = new SolPort(ruta);
+			factorySolPort = new FactorySolPort();
+			this.port = factorySolPort.crear(ruta);
 			this.port.setConnector(this);
 			break;
 
