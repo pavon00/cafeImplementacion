@@ -16,10 +16,12 @@ public class Slot {
 
 	public void ejecutar() {
 		if (entrada != null) {
-			entrada.run();
+			if (!entrada.isEjecutado()) {
+				entrada.run();
+			}
 		}
 		if (salida != null) {
-			if (salida.getClass().equals(Port.class)) {
+			if (!salida.isEjecutado()) {
 				salida.run();
 			}
 		}
@@ -82,9 +84,9 @@ public class Slot {
 		taskEntrada.setSlotSalida(this);
 		this.entrada = taskEntrada;
 	}
-	
-	public void setBufferString(String string) {
-		this.salida.setBufferString(string);
+
+	public void setBufferString(String string, Slot s) {
+		this.salida.setBufferString(string, s);
 	}
 
 	private void setTaskSalida(Task taskSalida) {

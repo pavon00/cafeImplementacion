@@ -6,11 +6,11 @@ import libreria.threader.ThreaderAdapter;
 public abstract class Task extends ThreaderAdapter {
 
 	private Process p;
-	private boolean terminado;
+	private boolean ejecutado;
 
 	public Task() {
 		this.p = Process.getInstance();
-		this.setTerminado(false);
+		this.setEjecutado(false);
 	}
 	
 	public Process getProcess() {
@@ -21,12 +21,12 @@ public abstract class Task extends ThreaderAdapter {
 		this.p = p;
 	}
 
-	public boolean isTerminado() {
-		return terminado;
+	public boolean isEjecutado() {
+		return ejecutado;
 	}
 
-	public void setTerminado(boolean terminado) {
-		this.terminado = terminado;
+	public void setEjecutado(boolean ejecutado) {
+		this.ejecutado = ejecutado;
 	}
 
 }

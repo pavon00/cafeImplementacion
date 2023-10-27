@@ -7,6 +7,8 @@ import java.io.FileReader;
 import libreria.Slot;
 
 public class EntryPort extends Port {
+	
+	private boolean ejecutado;
 	private Slot outputSlot;
 	private String ruta;
 
@@ -16,8 +18,9 @@ public class EntryPort extends Port {
 
 	@Override
 	public void realizarAccion() {
+		this.setEjecutado(true);
 		this.leerFichero();
-		outputSlot.setBufferString(getBufferString());
+		outputSlot.setBufferString(getBufferString(), outputSlot);
 	}
 
 	private void leerFichero() {
@@ -74,5 +77,19 @@ public class EntryPort extends Port {
 	public void setSlotEntrada(Slot s) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void setBufferString(String string, Slot s) {
+		this.setBufferString(string);
+	}
+
+	@Override
+	public boolean isEjecutado() {
+		return ejecutado;
+	}
+
+	public void setEjecutado(boolean ejecutado) {
+		this.ejecutado = ejecutado;
 	}
 }

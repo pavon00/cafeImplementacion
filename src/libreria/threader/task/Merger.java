@@ -24,6 +24,7 @@ public class Merger extends Task {
 
 	@Override
 	public void realizarAccion() {
+		this.setEjecutado(true);
 		// esperar a los nodos de entrada
 		if (!slotsEntrada.isEmpty() && slotSalida != null) {
 			try {
@@ -32,7 +33,7 @@ public class Merger extends Task {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Salir de espera, buffer: " + this.getBufferString());
+			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
 			if (Process.ESPERAR) {
 				try {
 					sleep(1000);
@@ -42,7 +43,8 @@ public class Merger extends Task {
 				}
 			}
 			for (String string : buffers) {
-				slotSalida.setBufferString(string);
+				System.out.println("Merger enviar: "+this.slotsEntrada.size()+" puertos "+string);
+				slotSalida.setBufferString(string, slotSalida);
 			}
 		}
 	}
@@ -54,8 +56,19 @@ public class Merger extends Task {
 	}
 
 	@Override
-	public void setBufferString(String bufferAux) {
-		this.buffers.add(bufferAux);
+	public void setBufferString(String buffer, Slot s) {
+		System.out.println("elemento Merger: " + buffer);
+		ArrayList<String> buffersAux = getBuffers();
+		buffersAux.add(buffer);
+		setBuffers(buffersAux);
+	}
+
+	public ArrayList<String> getBuffers() {
+		return buffers;
+	}
+
+	public void setBuffers(ArrayList<String> buffers) {
+		this.buffers = buffers;
 	}
 
 	@Override

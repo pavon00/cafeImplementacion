@@ -6,12 +6,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.xpath.XPathExpressionException;
+
+import org.xml.sax.SAXException;
 
 import libreria.Slot;
 import libreria.Util;
 
 public class SolPort extends Port {
 
+	private boolean ejecutado;
 	private Slot inputSlot, outputSlot;
 	private String ruta;
 
@@ -21,6 +31,7 @@ public class SolPort extends Port {
 
 	@Override
 	public void realizarAccion() {
+		this.setEjecutado(true);
 		// esperar slot entrada;
 		if (inputSlot != null) {
 			try {
@@ -30,20 +41,28 @@ public class SolPort extends Port {
 				e.printStackTrace();
 			}
 		}
-		this.escribirFichero();
+		// this.escribirFichero();
 		this.leerFichero();
-		outputSlot.setBufferString(getBufferString());
+		try {
+			ArrayList<String> aux = Util.splitXmlStringToElement(getBufferString(), "//status");
+			for (String string : aux) {
+				outputSlot.setBufferString(string, outputSlot);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void escribirFichero() {
 		escribirFichero(ruta, this);
 	}
-	
+
 	public static void escribirFichero(String ruta, Port port) {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		try {
-			System.out.println("ruta "+ruta);
+			System.out.println("ruta " + ruta);
 			fichero = getFileWriteCreateFile(ruta);
 			pw = new PrintWriter(fichero);
 			pw.println(Util.convertDocumentToString(port.getBuffer(), "/"));
@@ -60,7 +79,6 @@ public class SolPort extends Port {
 			}
 		}
 	}
-	
 
 	private static FileWriter getFileWriteCreateFile(String ruta) throws IOException {
 		File file = new File(ruta);
@@ -141,6 +159,20 @@ public class SolPort extends Port {
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.outputSlot = s;
+	}
+
+	@Override
+	public void setBufferString(String string, Slot s) {
+		this.setBufferString(string);
+
+	}
+
+	public boolean isEjecutado() {
+		return ejecutado;
+	}
+
+	public void setEjecutado(boolean ejecutado) {
+		this.ejecutado = ejecutado;
 	}
 
 }

@@ -17,6 +17,7 @@ public class Translator extends Task{
 
 	@Override
 	public void realizarAccion() {
+		this.setEjecutado(true);
 		// esperar a los nodos de entrada
 		if (slotEntrada != null && slotSalida != null) {
 			try {
@@ -25,7 +26,7 @@ public class Translator extends Task{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Salir de espera, buffer: " + this.getBufferString());
+			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
 			if (Process.ESPERAR) {
 				try {
 					sleep(1000);
@@ -54,7 +55,7 @@ public class Translator extends Task{
 	}
 
 	@Override
-	public void setBufferString(String buffer) {
+	public void setBufferString(String buffer, Slot s) {
 		// TODO Auto-generated method stub
 		this.buffer = buffer;
 	}

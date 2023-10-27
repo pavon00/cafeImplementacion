@@ -42,6 +42,7 @@ public class Distributor extends Task {
 
 	@Override
 	public void realizarAccion() {
+		this.setEjecutado(true);
 		// esperar a los nodos de entrada
 		if (slotEntrada != null && !slotsSalida.isEmpty()) {
 			try {
@@ -50,7 +51,7 @@ public class Distributor extends Task {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Salir de espera, buffer: " + this.getBufferString());
+			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
 			if (Process.ESPERAR) {
 				try {
 					sleep(1000);
@@ -75,7 +76,8 @@ public class Distributor extends Task {
 			for (String buff : buffers) {
 				ArrayList<String> list = Util.getXmlxPath(buff, xPathExpressions.get(i));
 				for (String string : list) {
-					slotsSalida.get(nSlot).setBufferString(string);
+					Slot sl = slotsSalida.get(nSlot);
+					sl.setBufferString(string, sl);
 				}
 			}
 
@@ -87,7 +89,7 @@ public class Distributor extends Task {
 	}
 
 	@Override
-	public void setBufferString(String bufferAux) {
+	public void setBufferString(String bufferAux, Slot s) {
 		this.buffers.add(bufferAux);
 	}
 

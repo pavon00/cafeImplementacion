@@ -66,7 +66,6 @@ public class Util {
 				XPathExpression exp = xPath.compile(xPathExpression);
 
 				NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
-				System.out.println("Found " + nl.getLength() + " results");
 
 				for (int i = 0; i < nl.getLength(); i++) {
 					Node node = nl.item(i);
@@ -113,7 +112,6 @@ public class Util {
 		XPath xPath = XPathFactory.newInstance().newXPath();
 		XPathExpression exp = xPath.compile(xPathExpression);
 		NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
-		System.out.println("Found " + nl.getLength() + " results");
 
 		String buffer = "";
 		for (int i = 0; i < nl.getLength(); i++) {
@@ -124,7 +122,6 @@ public class Util {
 			xform.transform(new DOMSource(node), new StreamResult(buf));
 			buffer = buffer + buf.toString();
 		}
-		System.out.println("Buffer " + buffer);
 		return buffer;
 	}
 
@@ -136,7 +133,6 @@ public class Util {
 		XPath xPath = XPathFactory.newInstance().newXPath();
 		XPathExpression exp = xPath.compile(xPathExpression);
 		NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
-		System.out.println("Found " + nl.getLength() + " results");
 
 		for (int i = 0; i < nl.getLength(); i++) {
 			Node node = nl.item(i);
@@ -144,7 +140,6 @@ public class Util {
 			Transformer xform = TransformerFactory.newInstance().newTransformer();
 			xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 			xform.transform(new DOMSource(node), new StreamResult(buf));
-			System.out.println("Split Elemento " + buf.toString());
 			aux.add(buf.toString());
 		}
 		return aux;
@@ -182,7 +177,6 @@ public class Util {
 			Transformer xform = TransformerFactory.newInstance().newTransformer();
 			xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 			xform.transform(new DOMSource(node), new StreamResult(buf));
-			System.out.println("Split Elemento " + buf.toString());
 			aux.add(buf.toString());
 		}
 		return aux;
@@ -190,7 +184,6 @@ public class Util {
 
 	public static String putPadre(String padre, String xml) {
 		String aux = "<" + padre + ">" + xml + "</" + padre + ">";
-		System.out.println("ANYADIDO PADRE "+ padre+": "+aux);
 		return aux;
 	}
 }
