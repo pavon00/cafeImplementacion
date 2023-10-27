@@ -158,6 +158,36 @@ public class Util {
 
 	}
 
+	public static ArrayList<String> getXmlxPath(String string, String xPathExpression)
+			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
+			TransformerFactoryConfigurationError, TransformerException {
+
+		return getXmlxPath(convertStringToDocument(string), xPathExpression);
+
+	}
+
+
+	private static ArrayList<String> getXmlxPath(Document documento, String xPathExpression)
+			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
+			TransformerFactoryConfigurationError, TransformerException {
+
+		ArrayList<String> aux = new ArrayList<String>();
+		XPath xPath = XPathFactory.newInstance().newXPath();
+		XPathExpression exp = xPath.compile(xPathExpression);
+		NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
+
+		for (int i = 0; i < nl.getLength(); i++) {
+			Node node = nl.item(i);
+			StringWriter buf = new StringWriter();
+			Transformer xform = TransformerFactory.newInstance().newTransformer();
+			xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+			xform.transform(new DOMSource(node), new StreamResult(buf));
+			System.out.println("Split Elemento " + buf.toString());
+			aux.add(buf.toString());
+		}
+		return aux;
+	}
+
 	public static String putPadre(String padre, String xml) {
 		String aux = "<" + padre + ">" + xml + "</" + padre + ">";
 		System.out.println("ANYADIDO PADRE "+ padre+": "+aux);
