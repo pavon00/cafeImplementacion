@@ -1,7 +1,5 @@
 package libreria.threader.task;
 
-import java.util.ArrayList;
-
 import libreria.Process;
 import libreria.Slot;
 
@@ -14,12 +12,8 @@ import libreria.Slot;
 public class ContextEnricher extends Task {
 
 	private String buffer;
-	private ArrayList<Slot> slotsEntrada, slotsSalida;
+	private Slot slotEntrada, slotContexto, slotSalida;
 	
-	public ContextEnricher() {
-		this.slotsEntrada = new ArrayList<Slot>();
-		this.slotsSalida = new ArrayList<Slot>();
-	}
 
 	@Override
 	public void setBufferString(String bufferAux) {
@@ -35,7 +29,7 @@ public class ContextEnricher extends Task {
 	@Override
 	public void realizarAccion() {
 		//esperar a los nodos de entrada
-		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
+		if (slotEntrada!=null && slotContexto!=null && slotSalida!=null) {
 			try {
 				esperarNodosEntrada();
 			} catch (InterruptedException e) {
@@ -43,33 +37,36 @@ public class ContextEnricher extends Task {
 				e.printStackTrace();
 			}
 			System.out.println("Salir de espera, buffer: "+this.getBufferString());
-		}
-		if (Process.ESPERAR) {
-			try {
-				sleep(1000);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (Process.ESPERAR) {
+				try {
+					sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
+			
 		}
 		
 	}
 	
 	public void esperarNodosEntrada() throws InterruptedException {
-		for (Slot slotEntrada : slotsEntrada) {
-			slotEntrada.esperar();
-		}
+		slotEntrada.esperar();
+		slotContexto.esperar();
 	}
 	
 	@Override
 	public void setSlotEntrada(Slot s) {
-		this.slotsEntrada.add(s);
-		
+		if (slotEntrada!=null) {
+			slotEntrada = s;
+		}else {
+			slotContexto = s;
+		}
 	}
 
 	@Override
 	public void setSlotSalida(Slot s) {
-		this.slotsSalida.add(s);
+		this.slotSalida = s;
 	}
 
 }

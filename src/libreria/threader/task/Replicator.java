@@ -9,40 +9,57 @@ import libreria.Slot;
  * Distribuye los mensajes de entrada hacia las salidas
  * Entradas: 1, Salidas: n
  * 
+ * Hecho
+ * 
 */
 
 public class Replicator extends Task {
 
-	private String buffer;
-	private ArrayList<Slot> slotsEntrada, slotsSalida;
-	
+	private ArrayList<String> buffers;
+	private ArrayList<Slot> slotsSalida;
+	private Slot slotEntrada;
+
 	public Replicator() {
-		this.slotsEntrada = new ArrayList<Slot>();
+		setBuffers(new ArrayList<String>());
 		this.slotsSalida = new ArrayList<Slot>();
 	}
 
 	@Override
-	public void setBufferString(String bufferAux) {
-		this.buffer = bufferAux;
+	public void setBufferString(String buffer) {
+		System.out.println("elemento: " + buffer);
+		ArrayList<String> buffersAux = getBuffers();
+		buffersAux.add(buffer);
+		setBuffers(buffersAux);
 	}
-	
+
+	public ArrayList<String> getBuffers() {
+		return buffers;
+	}
+
+	public void setBuffers(ArrayList<String> buffers) {
+		this.buffers = buffers;
+	}
+
 	@Override
 	public String getBufferString() {
-		// TODO Auto-generated method stub
-		return this.buffer;
+		String aux = "";
+		for (String string : buffers) {
+			aux = aux + string;
+		}
+		return aux;
 	}
 
 	@Override
 	public void realizarAccion() {
-		//esperar a los nodos de entrada
-		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
+		// esperar a los nodos de entrada
+		if (slotEntrada != null && !slotsSalida.isEmpty()) {
 			try {
 				esperarNodosEntrada();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Salir de espera, buffer: "+this.getBufferString());
+			System.out.println("Salir de espera, buffer: " + this.getBufferString());
 			if (Process.ESPERAR) {
 				try {
 					sleep(1000);
@@ -52,22 +69,22 @@ public class Replicator extends Task {
 				}
 			}
 			for (Slot slot : this.slotsSalida) {
-				slot.setBufferString(this.getBufferString());
+				for (String string : buffers) {
+					slot.setBufferString(string);
+				}
 			}
 		}
-		
+
 	}
-	
+
 	public void esperarNodosEntrada() throws InterruptedException {
-		for (Slot slotEntrada : slotsEntrada) {
-			slotEntrada.esperar();
-		}
+		slotEntrada.esperar();
 	}
-	
+
 	@Override
 	public void setSlotEntrada(Slot s) {
-		this.slotsEntrada.add(s);
-		
+		this.slotEntrada = s;
+
 	}
 
 	@Override

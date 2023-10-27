@@ -10,18 +10,18 @@ import libreria.Util;
  * Reconstruye un mensaje divido previamente por una tarea Splitter
  * Entradas: 1, Salidas: 1
  * 
+ * Hecho
+ * 
 */
 
 public class Aggregator extends Task {
 
 	private ArrayList<String> nodoPadre;
 	private ArrayList<String> buffers;
-	private ArrayList<Slot> slotsEntrada, slotsSalida;
+	private Slot slotEntrada, slotSalida;
 
 	public Aggregator(String... nodoPadre) {
 		this.nodoPadre = new ArrayList<String>();
-		this.slotsEntrada = new ArrayList<Slot>();
-		this.slotsSalida = new ArrayList<Slot>();
 		for (String string : nodoPadre) {
 			this.setNodoPadre(string);
 		}
@@ -31,7 +31,7 @@ public class Aggregator extends Task {
 	@Override
 	public void realizarAccion() {
 		// esperar a los nodos de entrada
-		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
+		if (slotEntrada != null && slotSalida != null) {
 			try {
 				esperarNodosEntrada();
 			} catch (InterruptedException e) {
@@ -48,16 +48,12 @@ public class Aggregator extends Task {
 				}
 			}
 			String bufferAux = aggregatorTarea();
-			for (Slot slot : this.slotsSalida) {
-				slot.setBufferString(bufferAux);
-			}
+			slotSalida.setBufferString(bufferAux);
 		}
 	}
 
 	public void esperarNodosEntrada() throws InterruptedException {
-		for (Slot slotEntrada : slotsEntrada) {
-			slotEntrada.esperar();
-		}
+		slotEntrada.esperar();
 	}
 
 	public String aggregatorTarea() {
@@ -108,13 +104,13 @@ public class Aggregator extends Task {
 
 	@Override
 	public void setSlotEntrada(Slot s) {
-		this.slotsEntrada.add(s);
+		this.slotEntrada = s;
 
 	}
 
 	@Override
 	public void setSlotSalida(Slot s) {
-		this.slotsSalida.add(s);
+		this.slotSalida = s;
 	}
 
 }

@@ -10,32 +10,31 @@ import libreria.Util;
  * Divide un mensaje de entrada formado por una lista de elementos en tantos mensajes como elementos tenga
  * Entradas: 1, Salidas: 1
  * 
+ * Hecho
+ * 
 */
 
-public class Splitter extends Task{
+public class Splitter extends Task {
 
 	private String buffer;
-	private ArrayList<Slot> slotsEntrada, slotsSalida;
+	private Slot slotEntrada, slotSalida;
 	private String xPathExpression;
-	
-	public Splitter(String xPathExpression){
+
+	public Splitter(String xPathExpression) {
 		this.setxPathExpression(xPathExpression);
-		this.slotsEntrada = new ArrayList<Slot>();
-		this.slotsSalida = new ArrayList<Slot>();
 	}
 
-	
 	@Override
 	public void realizarAccion() {
-		//esperar a los nodos de entrada
-		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
+		// esperar a los nodos de entrada
+		if (slotEntrada != null && slotSalida != null) {
 			try {
 				esperarNodosEntrada();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Salir de espera, buffer: "+this.getBufferString());
+			System.out.println("Salir de espera, buffer: " + this.getBufferString());
 			if (Process.ESPERAR) {
 				try {
 					sleep(1000);
@@ -51,41 +50,37 @@ public class Splitter extends Task{
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
+			}
 			if (bufferAux != null) {
-				for (Slot slot : this.slotsSalida) {
-					for (String string : bufferAux) {
-						slot.setBufferString(string);
-					}
+				for (String string : bufferAux) {
+					slotSalida.setBufferString(string);
 				}
 			}
 		}
-		
+
 	}
-	
+
 	public void esperarNodosEntrada() throws InterruptedException {
-		for (Slot slotEntrada : slotsEntrada) {
-			slotEntrada.esperar();
-		}
+		slotEntrada.esperar();
 	}
-	
+
 	@Override
 	public void setSlotEntrada(Slot s) {
-		this.slotsEntrada.add(s);
-		
+		this.slotEntrada=s;
+
 	}
 
 	@Override
 	public void setSlotSalida(Slot s) {
-		this.slotsSalida.add(s);
+		this.slotSalida= s;
 	}
-	
+
 	@Override
 	public void setBufferString(String buffer) {
 		// TODO Auto-generated method stub
 		this.buffer = buffer;
 	}
-	
+
 	@Override
 	public String getBufferString() {
 		// TODO Auto-generated method stub
@@ -99,5 +94,5 @@ public class Splitter extends Task{
 	public void setxPathExpression(String xPathExpression) {
 		this.xPathExpression = xPathExpression;
 	}
-	
+
 }
