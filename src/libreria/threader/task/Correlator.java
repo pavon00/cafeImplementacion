@@ -34,6 +34,7 @@ public class Correlator extends Task {
 			Slot slot = this.slotsSalida.get(nSlot);
 			slot.setBufferString(buffers.get(i), slot);
 		}
+		this.buffers = new ArrayList<String>();
 
 	}
 
@@ -98,7 +99,7 @@ public class Correlator extends Task {
 		}
 		
 		for (int i = 0; i < listaConteo.size(); i++) {
-			System.out.println("conteo posicion "+i+": "+listaConteo.get(i));
+			//System.out.println("conteo posicion "+i+": "+listaConteo.get(i));
 		}
 
 		int aux = listaConteo.get(0);

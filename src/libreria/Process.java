@@ -11,6 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import libreria.threader.ThreaderAdapter;
 import libreria.threader.port.Port;
 import libreria.threader.task.Task;
 
@@ -19,19 +20,32 @@ public class Process {
 	private ArrayList<List<Slot>> listaSlots;
 	public static boolean ESPERAR;
 	private ArrayList<Integer> listaSplitNElements;
-	private boolean terminar;
+	private boolean terminar, ejecutandoProceso;
 	private ReentrantLock lock;
-	private Condition condition;
+	private Condition colaTareas, colaProcesos;
 
 	public Process() {
 		lock = new ReentrantLock();
-		setCondition(lock.newCondition());
+		setColaTareas(lock.newCondition());
+		setColaProcesos(lock.newCondition());
 		terminar = false;
 		listaSlots = new ArrayList<List<Slot>>();
 		listaSplitNElements = new ArrayList<Integer>();
 	}
 
+	private ThreaderAdapter getPrimero() {
+		return listaSlots.get(0).get(0).getEntrada();
+	}
+
+	private ThreaderAdapter getUltimo() {
+		int nUltimo = listaSlots.size() - 1;
+		int nUltimoSlot = listaSlots.get(nUltimo).size() - 1;
+		return listaSlots.get(nUltimo).get(nUltimoSlot).getSalida();
+	}
+
 	public void ejecutar() {
+		getPrimero().setPrimero(true);
+		getUltimo().setUltimo(true);
 		for (List<Slot> list : listaSlots) {
 			for (Slot slot : list) {
 				slot.ejecutar();
@@ -200,18 +214,26 @@ public class Process {
 			try {
 				lock.lock();
 			} finally {
-				condition.signalAll();
+				colaTareas.signalAll();
 				lock.unlock();
 			}
 		}
 	}
 
-	public Condition getCondition() {
-		return condition;
+	public Condition getColaTareas() {
+		return colaTareas;
 	}
 
-	public void setCondition(Condition condition) {
-		this.condition = condition;
+	public void setColaTareas(Condition condition) {
+		this.colaTareas = condition;
+	}
+
+	public Condition getColaProcesos() {
+		return colaProcesos;
+	}
+
+	public void setColaProcesos(Condition condition) {
+		this.colaProcesos = condition;
 	}
 
 	public ReentrantLock getLock() {
@@ -220,6 +242,14 @@ public class Process {
 
 	public void setLock(ReentrantLock lock) {
 		this.lock = lock;
+	}
+
+	public boolean isEjecutandoProceso() {
+		return ejecutandoProceso;
+	}
+
+	public void setEjecutandoProceso(boolean ejecutandoProceso) {
+		this.ejecutandoProceso = ejecutandoProceso;
 	}
 
 }

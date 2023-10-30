@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import libreria.Process;
 import libreria.Slot;
 import libreria.Util;
 
@@ -23,7 +22,6 @@ public class ExitPort extends Port {
 	public void realizarAccion() {
 		// esperar slot entrada
 		this.escribirFichero();
-		Process.getInstance().setTerminar(true);
 	}
 	
 	@Override

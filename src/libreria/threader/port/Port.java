@@ -33,6 +33,7 @@ public abstract class Port extends ThreaderAdapter {
 
 	public void setBufferString(String m) {
 		this.m.setBuffer(m);
+		
 	}
 
 	public void setBuffer(Document m) throws XPathExpressionException, ParserConfigurationException, SAXException,

@@ -24,7 +24,9 @@ public class Translator extends Task {
 	public void realizarAccion() {
 		super.realizarAccion();
 		String buff = anyadirMensajeContextoACuerpo(addString, this.getBufferString());
-		slotSalida.setBufferString(buff, slotSalida);
+		if (buff != null) {
+			slotSalida.setBufferString(buff, slotSalida);
+		}
 	}
 
 	@Override
@@ -40,7 +42,7 @@ public class Translator extends Task {
 		aux.add(slotEntrada);
 		return aux;
 	}
-	
+
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub
@@ -50,6 +52,9 @@ public class Translator extends Task {
 	}
 
 	public String anyadirMensajeContextoACuerpo(String mensaje, String xml) {
+		if (xml ==null || mensaje == null || xml.isEmpty() || mensaje.isEmpty()) {
+			return null;
+		}
 		int indice = xml.indexOf('>');
 		String primeraParte = xml.substring(0, indice + 1);
 		String segundaParte = xml.substring(indice + 1);
@@ -78,7 +83,6 @@ public class Translator extends Task {
 		// TODO Auto-generated method stub
 		return this.buffer;
 	}
-	
 
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {

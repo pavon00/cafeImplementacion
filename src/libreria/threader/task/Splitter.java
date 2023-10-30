@@ -18,6 +18,7 @@ public class Splitter extends Task {
 	private String buffer;
 	private Slot slotEntrada, slotSalida;
 	private String xPathExpression;
+	
 
 	public Splitter(String xPathExpression) {
 		this.setxPathExpression(xPathExpression);

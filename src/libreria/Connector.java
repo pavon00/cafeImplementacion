@@ -1,5 +1,6 @@
 package libreria;
 
+import libreria.threader.ThreaderAdapter;
 import libreria.threader.port.FactoryEntryPort;
 import libreria.threader.port.FactoryExitPort;
 import libreria.threader.port.FactorySolPort;
@@ -38,6 +39,11 @@ public class Connector {
 			break;
 		}
 
+	}
+	
+	public void notificar() {
+		this.port.setEntradaMensaje(true);
+		ThreaderAdapter.notificar();
 	}
 
 

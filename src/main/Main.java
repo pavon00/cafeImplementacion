@@ -14,10 +14,36 @@ import libreria.threader.task.Translator;
 
 public class Main {
 	public static void main(String[] args) {
-		Connector order = new Connector(Tipo.Entrada, "order1.xml");
-		Connector waiter = new Connector(Tipo.Salida, "waiter.xml");
-		Connector BaristaHot = new Connector(Tipo.Sol, "baristaHot.xml");
-		Connector BaristaCold = new Connector(Tipo.Sol, "baristaCold.xml");
+		Connector orderConnector = new Connector(Tipo.Entrada, "order9.xml");
+		Connector waiterConnector = new Connector(Tipo.Salida, "waiter.xml");
+		Connector BaristaColdConnector = new Connector(Tipo.Sol, "baristaHot.xml");
+		Connector BaristaHotConnector = new Connector(Tipo.Sol, "baristaCold.xml");
+		getProcess(orderConnector, waiterConnector, BaristaColdConnector, BaristaHotConnector).ejecutar();
+		
+		Order order = new Order(orderConnector);
+		for (int i = 0; i < 2; i++) {
+			order.leerFichero("order9.xml");
+			
+		}
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Process.getInstance().setTerminar(true);
+		
+		
+		try {
+			waiterConnector.getPort().join();
+			System.out.println("TERMINAR");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static Process getProcess(Connector orderConnector, Connector waiterConnector, Connector BaristaColdConnector, Connector BaristaHotConnector) {
 		Splitter splitter = new Splitter("//drink");
 		Distributor distributor = new Distributor();
 		distributor.direccionar(1, "/drink[type='hot']");
@@ -40,41 +66,34 @@ public class Main {
 		 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
 		 */
 		try {
-			p.anyadirSlot(order.getPort(), splitter);
+			p.anyadirSlot(orderConnector.getPort(), splitter);
 			p.anyadirSlot(splitter, distributor);
 			
 			p.anyadirSlot(distributor, replicator1);
 			p.anyadirSlot(replicator1, translator1);
-			p.anyadirSlot(translator1, BaristaHot.getPort());
+			p.anyadirSlot(translator1, BaristaHotConnector.getPort());
 			p.anyadirSlot(replicator1, correlator1);
-			p.anyadirSlot(BaristaHot.getPort(), correlator1);
+			p.anyadirSlot(BaristaHotConnector.getPort(), correlator1);
 			p.anyadirSlot(correlator1, contextEnricher1);
 			p.anyadirSlot(correlator1, contextEnricher1);
 			p.anyadirSlot(contextEnricher1, merger);
 
 			p.anyadirSlot(distributor, replicator2);
 			p.anyadirSlot(replicator2, translator2);
-			p.anyadirSlot(translator2, BaristaCold.getPort());
+			p.anyadirSlot(translator2, BaristaColdConnector.getPort());
 			p.anyadirSlot(replicator2, correlator2);
-			p.anyadirSlot(BaristaCold.getPort(), correlator2);
+			p.anyadirSlot(BaristaColdConnector.getPort(), correlator2);
 			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(contextEnricher2, merger);
 			
 			p.anyadirSlot(merger, aggregator);
-			p.anyadirSlot(aggregator, waiter.getPort());
+			p.anyadirSlot(aggregator, waiterConnector.getPort());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		p.ejecutar();
-		
-		try {
-			waiter.getPort().join();
-			System.out.println("TERMINAR");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return p;
 	}
+	
 }

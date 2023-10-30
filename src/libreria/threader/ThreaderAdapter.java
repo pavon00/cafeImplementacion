@@ -9,7 +9,7 @@ import libreria.Slot;
 
 public abstract class ThreaderAdapter extends Thread {
 
-	private boolean ejecutado, entradaMensaje;
+	private boolean ejecutado, entradaMensaje, primero, ultimo;
 
 	@Override
 	public void run() {
@@ -18,11 +18,25 @@ public abstract class ThreaderAdapter extends Thread {
 			while (!isTerminado()) {
 				esperarNodosEntrada();
 				if (!isTerminado()) {
+					Process p = Process.getInstance();
+					if (primero) {
+						p.setEjecutandoProceso(true);
+					}
 					realizarAccion();
 					for (Slot s : getSlotsSalida()) {
 						s.getSalida().setEntradaMensaje(true);
 					}
 					notificar();
+					this.setEntradaMensaje(false);
+					if (ultimo) {
+						p.setEjecutandoProceso(false);
+						try {
+							p.getLock().lock();
+						} finally {
+							p.getColaProcesos().signalAll();
+							p.getLock().unlock();
+						}
+					}
 				}
 			}
 		}
@@ -48,12 +62,11 @@ public abstract class ThreaderAdapter extends Thread {
 
 	public abstract void setBufferString(String string, Slot s);
 
-	public void notificar() {
+	public static void notificar() {
 		ReentrantLock lock = Process.getInstance().getLock();
-		Condition c = Process.getInstance().getCondition();
+		Condition c = Process.getInstance().getColaTareas();
 		try {
 			lock.lock();
-			this.setEntradaMensaje(false);
 		} finally {
 			c.signalAll();
 			lock.unlock();
@@ -72,7 +85,7 @@ public abstract class ThreaderAdapter extends Thread {
 
 	public void esperarNodosEntrada() {
 		ReentrantLock lock = Process.getInstance().getLock();
-		Condition c = Process.getInstance().getCondition();
+		Condition c = Process.getInstance().getColaTareas();
 		try {
 			lock.lock();
 		} finally {
@@ -94,5 +107,21 @@ public abstract class ThreaderAdapter extends Thread {
 
 	public synchronized void setEjecutado(boolean ejecutado) {
 		this.ejecutado = ejecutado;
+	}
+
+	public boolean isPrimero() {
+		return primero;
+	}
+
+	public void setPrimero(boolean primero) {
+		this.primero = primero;
+	}
+
+	public boolean isUltimo() {
+		return ultimo;
+	}
+
+	public void setUltimo(boolean ultimo) {
+		this.ultimo = ultimo;
 	}
 }

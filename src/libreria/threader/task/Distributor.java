@@ -71,6 +71,7 @@ public class Distributor extends Task {
 		// TODO Auto-generated method stub
 		return this.slotsSalida;
 	}
+	
 	private void distributorTask() throws XPathExpressionException, ParserConfigurationException, SAXException,
 			IOException, TransformerFactoryConfigurationError, TransformerException {
 		for (int i = 0; i < xPathExpressions.size(); i++) {
