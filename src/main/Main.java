@@ -33,7 +33,7 @@ public class Main {
 		Merger merger = new Merger();
 		Aggregator aggregator = new Aggregator("drinks", "cafe_order");
 		Process p = Process.getInstance();
-		Process.ESPERAR = true;
+		Process.ESPERAR = false;
 		/*
 		 * try { p.anyadirSlot(order.getPort(), splitter); p.anyadirSlot(splitter,
 		 * aggregator); p.anyadirSlot(aggregator, waiter.getPort()); } catch (Exception
@@ -42,7 +42,9 @@ public class Main {
 		try {
 			p.anyadirSlot(order.getPort(), splitter);
 			p.anyadirSlot(splitter, distributor);
-			p.anyadirSlot(distributor, Process.crearArray(replicator1, replicator2));
+			p.anyadirSlot(distributor, replicator1);
+			p.anyadirSlot(distributor, replicator2);
+			
 			p.anyadirSlot(replicator1, translator1);
 			p.anyadirSlot(replicator2, translator2);
 			p.anyadirSlot(translator1, BaristaHot.getPort());
@@ -57,6 +59,7 @@ public class Main {
 			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(contextEnricher1, merger);
 			p.anyadirSlot(contextEnricher2, merger);
+			
 			p.anyadirSlot(merger, aggregator);
 			p.anyadirSlot(aggregator, waiter.getPort());
 		} catch (Exception e) {

@@ -7,21 +7,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactoryConfigurationError;
-import javax.xml.xpath.XPathExpressionException;
-
-import org.xml.sax.SAXException;
 
 import libreria.Slot;
 import libreria.Util;
 
 public class SolPort extends Port {
 
-	private boolean ejecutado;
 	private Slot inputSlot, outputSlot;
 	private String ruta;
 
@@ -31,7 +22,6 @@ public class SolPort extends Port {
 
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
 		// esperar slot entrada;
 		if (inputSlot != null) {
 			try {
@@ -165,14 +155,6 @@ public class SolPort extends Port {
 	public void setBufferString(String string, Slot s) {
 		this.setBufferString(string);
 
-	}
-
-	public boolean isEjecutado() {
-		return ejecutado;
-	}
-
-	public void setEjecutado(boolean ejecutado) {
-		this.ejecutado = ejecutado;
 	}
 
 }

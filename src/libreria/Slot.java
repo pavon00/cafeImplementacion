@@ -41,9 +41,9 @@ public class Slot {
 		return false;
 	}
 
-	public void esperar() throws InterruptedException {
-		if (entrada != null) {
-			entrada.join();
+	public synchronized void esperar() throws InterruptedException {
+		while (!entrada.isTerminado()) {
+			this.wait();
 		}
 	}
 

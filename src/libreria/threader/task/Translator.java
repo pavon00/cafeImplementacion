@@ -1,6 +1,5 @@
 package libreria.threader.task;
 
-import libreria.Process;
 import libreria.Slot;
 
 /*

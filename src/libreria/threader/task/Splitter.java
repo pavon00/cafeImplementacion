@@ -2,7 +2,6 @@ package libreria.threader.task;
 
 import java.util.ArrayList;
 
-import libreria.Process;
 import libreria.Slot;
 import libreria.Util;
 

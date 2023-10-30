@@ -10,7 +10,6 @@ import libreria.Util;
 
 public class ExitPort extends Port {
 
-	private boolean ejecutado;
 	private Slot inputSlot;
 	private String ruta;
 	
@@ -20,7 +19,6 @@ public class ExitPort extends Port {
 	
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
 		// esperar slot entrada
 		if (inputSlot != null) {
 			try {
@@ -110,12 +108,5 @@ public class ExitPort extends Port {
 		this.setBufferString(string);
 	}
 
-	public boolean isEjecutado() {
-		return ejecutado;
-	}
-
-	public void setEjecutado(boolean ejecutado) {
-		this.ejecutado = ejecutado;
-	}
 	
 }

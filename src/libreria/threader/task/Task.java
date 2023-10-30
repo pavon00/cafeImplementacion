@@ -6,16 +6,13 @@ import libreria.threader.ThreaderAdapter;
 public abstract class Task extends ThreaderAdapter {
 
 	private Process p;
-	private boolean ejecutado;
 
 	public Task() {
 		this.p = Process.getInstance();
-		this.setEjecutado(false);
 	}
 
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
 		try {
 			esperarNodosEntrada();
 		} catch (InterruptedException e) {
@@ -42,14 +39,6 @@ public abstract class Task extends ThreaderAdapter {
 
 	public void setProcess(Process p) {
 		this.p = p;
-	}
-
-	public boolean isEjecutado() {
-		return ejecutado;
-	}
-
-	public void setEjecutado(boolean ejecutado) {
-		this.ejecutado = ejecutado;
 	}
 
 }
