@@ -51,33 +51,16 @@ public class Replicator extends Task {
 
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
-		// esperar a los nodos de entrada
-		if (slotEntrada != null && !slotsSalida.isEmpty()) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
-			if (Process.ESPERAR) {
-				try {
-					sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-			for (Slot slot : this.slotsSalida) {
-				for (String string : buffers) {
-					slot.setBufferString(string, slot);
-				}
+		super.realizarAccion();
+		for (Slot slot : this.slotsSalida) {
+			for (String string : buffers) {
+				slot.setBufferString(string, slot);
 			}
 		}
 
 	}
 
+	@Override
 	public void esperarNodosEntrada() throws InterruptedException {
 		slotEntrada.esperar();
 	}

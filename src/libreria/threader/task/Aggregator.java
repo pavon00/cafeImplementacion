@@ -30,29 +30,13 @@ public class Aggregator extends Task {
 
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
-		// esperar a los nodos de entrada
-		if (slotEntrada != null && slotSalida != null) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
-			if (Process.ESPERAR) {
-				try {
-					sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-			String bufferAux = aggregatorTarea();
-			slotSalida.setBufferString(bufferAux, slotSalida);
-		}
+		// TODO Auto-generated method stub
+		super.realizarAccion();
+		String bufferAux = aggregatorTarea();
+		slotSalida.setBufferString(bufferAux, slotSalida);
 	}
 
+	@Override
 	public void esperarNodosEntrada() throws InterruptedException {
 		slotEntrada.esperar();
 	}

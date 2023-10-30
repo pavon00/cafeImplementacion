@@ -2,7 +2,6 @@ package libreria.threader.task;
 
 import java.util.ArrayList;
 
-import libreria.Process;
 import libreria.Slot;
 
 /*
@@ -47,25 +46,7 @@ public class ContextEnricher extends Task {
 
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
-		// esperar a los nodos de entrada
-		if (slotEntrada != null && slotContexto != null && slotSalida != null) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
-			if (Process.ESPERAR) {
-				try {
-					sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
+		super.realizarAccion();
 
 		for (int i = 0; i < buffersContexto.size(); i++) {
 			String contextBuff = buffersContexto.get(i);
@@ -83,6 +64,7 @@ public class ContextEnricher extends Task {
 		return primeraParte + mensaje + segundaParte;
 	}
 
+	@Override
 	public void esperarNodosEntrada() throws InterruptedException {
 		slotEntrada.esperar();
 		slotContexto.esperar();

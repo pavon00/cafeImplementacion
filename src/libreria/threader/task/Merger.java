@@ -24,31 +24,15 @@ public class Merger extends Task {
 
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
-		// esperar a los nodos de entrada
-		if (!slotsEntrada.isEmpty() && slotSalida != null) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
-			if (Process.ESPERAR) {
-				try {
-					sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-			for (String string : buffers) {
-				System.out.println("Merger enviar: "+this.slotsEntrada.size()+" puertos "+string);
-				slotSalida.setBufferString(string, slotSalida);
-			}
+		super.realizarAccion();
+		for (String string : buffers) {
+			System.out.println("Merger enviar: " + this.slotsEntrada.size() + " puertos " + string);
+			slotSalida.setBufferString(string, slotSalida);
 		}
+
 	}
 
+	@Override
 	public void esperarNodosEntrada() throws InterruptedException {
 		for (Slot slotEntrada : slotsEntrada) {
 			slotEntrada.esperar();

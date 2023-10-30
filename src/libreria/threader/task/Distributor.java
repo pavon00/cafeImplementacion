@@ -42,25 +42,7 @@ public class Distributor extends Task {
 
 	@Override
 	public void realizarAccion() {
-		this.setEjecutado(true);
-		// esperar a los nodos de entrada
-		if (slotEntrada != null && !slotsSalida.isEmpty()) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
-			if (Process.ESPERAR) {
-				try {
-					sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
+		super.realizarAccion();
 		try {
 			distributorTask();
 		} catch (Exception e) {
@@ -84,6 +66,7 @@ public class Distributor extends Task {
 		}
 	}
 
+	@Override
 	public void esperarNodosEntrada() throws InterruptedException {
 		slotEntrada.esperar();
 	}

@@ -1,7 +1,6 @@
 package libreria.threader.task;
 
 import java.util.ArrayList;
-import libreria.Process;
 import libreria.Slot;
 
 /*
@@ -28,24 +27,7 @@ public class Correlator extends Task {
 	@Override
 	public void realizarAccion() {
 		this.setEjecutado(true);
-		// esperar a los nodos de entrada
-		if (!slotsEntrada.isEmpty() && !slotsSalida.isEmpty()) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("---  "+this.getClass()+"  -----Salir de espera, buffer: " + this.getBufferString());
-			if (Process.ESPERAR) {
-				try {
-					sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		}
+		super.realizarAccion();
 		for (int i = 0; i < buffers.size(); i++) {
 			int nSlot = nSlotEntrada.get(i);
 			Slot slot = this.slotsSalida.get(nSlot);
@@ -53,7 +35,8 @@ public class Correlator extends Task {
 		}
 		
 	}
-	
+
+	@Override
 	public void esperarNodosEntrada() throws InterruptedException {
 		for (Slot s : slotsEntrada) {
 			s.esperar();
