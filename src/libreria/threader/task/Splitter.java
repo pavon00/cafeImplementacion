@@ -29,22 +29,42 @@ public class Splitter extends Task {
 		ArrayList<String> bufferAux = null;
 		try {
 			bufferAux = Util.splitXmlStringToElement(this.getBufferString(), xPathExpression);
+			int nElements = Util.splitXmlStringGetNElements(this.getBufferString(), xPathExpression);
+			setIdProceso(nElements);
 			System.out.println(bufferAux);
+			for (String string : bufferAux) {
+				slotSalida.setBufferString(string, slotSalida);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (bufferAux != null) {
-			for (String string : bufferAux) {
-				slotSalida.setBufferString(string, slotSalida);
-			}
-		}
+	}
+	
+	private void setIdProceso(int nElements) {
+		this.getProcess().getListaSplitNElements().add(nElements);
+	}
+	
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(this.slotSalida);
+		return aux;
+	} 
 
+	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return slotEntrada != null;
 	}
 
 	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		slotEntrada.esperar();
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(slotEntrada);
+		return aux;
 	}
 
 	@Override
@@ -76,6 +96,12 @@ public class Splitter extends Task {
 
 	public void setxPathExpression(String xPathExpression) {
 		this.xPathExpression = xPathExpression;
+	}
+	
+
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return this.isEntradaMensaje();
 	}
 
 }

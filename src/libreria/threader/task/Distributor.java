@@ -44,12 +44,33 @@ public class Distributor extends Task {
 		super.realizarAccion();
 		try {
 			distributorTask();
+			this.buffers = new ArrayList<String>();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return slotEntrada != null;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(slotEntrada);
+		return aux;
+	}
+
+	
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		return this.slotsSalida;
+	}
 	private void distributorTask() throws XPathExpressionException, ParserConfigurationException, SAXException,
 			IOException, TransformerFactoryConfigurationError, TransformerException {
 		for (int i = 0; i < xPathExpressions.size(); i++) {
@@ -63,11 +84,6 @@ public class Distributor extends Task {
 			}
 
 		}
-	}
-
-	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		slotEntrada.esperar();
 	}
 
 	@Override
@@ -92,6 +108,12 @@ public class Distributor extends Task {
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.slotsSalida.add(s);
+	}
+
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		// TODO Auto-generated method stub
+		return this.isEntradaMensaje();
 	}
 
 }

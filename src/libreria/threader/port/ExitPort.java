@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import libreria.Process;
 import libreria.Slot;
 import libreria.Util;
 
@@ -20,24 +22,24 @@ public class ExitPort extends Port {
 	@Override
 	public void realizarAccion() {
 		// esperar slot entrada
-		if (inputSlot != null) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			this.escribirFichero();
-		}
-	}
-
-	private void esperarNodosEntrada() throws InterruptedException {
-		if (inputSlot != null) {
-			inputSlot.esperar();
-		}
+		this.escribirFichero();
+		Process.getInstance().setTerminar(true);
 	}
 	
+	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return inputSlot != null;
+	}
 
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(inputSlot);
+		return aux;
+	}
+	
 	public void escribirFichero() {
 		escribirFichero(ruta, this);
 	}
@@ -108,5 +110,16 @@ public class ExitPort extends Port {
 		this.setBufferString(string);
 	}
 
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		return aux;
+	}
 	
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return this.isEntradaMensaje();
+	}
+
 }

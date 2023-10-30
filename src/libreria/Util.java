@@ -145,11 +145,30 @@ public class Util {
 		return aux;
 	}
 
+	private static int splitDocumentToStringsNElement(Document documento, String xPathExpression)
+			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
+			TransformerFactoryConfigurationError, TransformerException {
+
+		XPath xPath = XPathFactory.newInstance().newXPath();
+		XPathExpression exp = xPath.compile(xPathExpression);
+		NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
+
+		return nl.getLength();
+	}
+
 	public static ArrayList<String> splitXmlStringToElement(String string, String xPathExpression)
 			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
 			TransformerFactoryConfigurationError, TransformerException {
 
 		return splitDocumentToStrings(convertStringToDocument(string), xPathExpression);
+
+	}
+
+	public static int splitXmlStringGetNElements(String string, String xPathExpression)
+			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
+			TransformerFactoryConfigurationError, TransformerException {
+
+		return splitDocumentToStringsNElement(convertStringToDocument(string), xPathExpression);
 
 	}
 

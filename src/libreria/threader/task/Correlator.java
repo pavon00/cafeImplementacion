@@ -1,6 +1,7 @@
 package libreria.threader.task;
 
 import java.util.ArrayList;
+
 import libreria.Slot;
 
 /*
@@ -33,14 +34,25 @@ public class Correlator extends Task {
 			Slot slot = this.slotsSalida.get(nSlot);
 			slot.setBufferString(buffers.get(i), slot);
 		}
-		
+
 	}
 
 	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		for (Slot s : slotsEntrada) {
-			s.esperar();
-		}
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return !slotsEntrada.isEmpty();
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		return slotsEntrada;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		return this.slotsSalida;
 	}
 
 	@Override
@@ -53,7 +65,7 @@ public class Correlator extends Task {
 	public String getBufferString() {
 		String aux = "";
 		for (int i = 0; i < buffers.size(); i++) {
-			aux = aux + buffers.get(i) + " posicion: "+ nSlotEntrada.get(i)+ " ";
+			aux = aux + buffers.get(i) + " posicion: " + nSlotEntrada.get(i) + " ";
 		}
 		return aux;
 	}
@@ -66,6 +78,39 @@ public class Correlator extends Task {
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.slotsSalida.add(s);
+	}
+
+	//espera hasta tener el mismo numero de mensajes de cada puerto de entrada
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		if (!this.isEntradaMensaje()) {
+			return false;
+		}
+		ArrayList<Integer> listaConteo = new ArrayList<Integer>();
+
+		for (int i = 0; i < slotsEntrada.size(); i++) {
+			listaConteo.add(0);
+		}
+
+		for (int i = 0; i < buffers.size(); i++) {
+			int nSlot = nSlotEntrada.get(i);
+			listaConteo.set(nSlot, listaConteo.get(nSlot) + 1);
+		}
+		
+		for (int i = 0; i < listaConteo.size(); i++) {
+			System.out.println("conteo posicion "+i+": "+listaConteo.get(i));
+		}
+
+		int aux = listaConteo.get(0);
+		for (int i = 1; i < listaConteo.size(); i++) {
+			if (listaConteo.get(i) == 0) {
+				return false;
+			}
+			if (aux != listaConteo.get(i)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

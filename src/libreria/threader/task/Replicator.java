@@ -24,6 +24,26 @@ public class Replicator extends Task {
 	}
 
 	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return slotEntrada != null;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(slotEntrada);
+		return aux;
+	}
+	
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		return this.slotsSalida;
+	}
+
+	@Override
 	public void setBufferString(String buffer, Slot s) {
 		System.out.println("elemento: " + buffer);
 		ArrayList<String> buffersAux = getBuffers();
@@ -56,12 +76,8 @@ public class Replicator extends Task {
 				slot.setBufferString(string, slot);
 			}
 		}
+		this.buffers = new ArrayList<String>();
 
-	}
-
-	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		slotEntrada.esperar();
 	}
 
 	@Override
@@ -73,5 +89,11 @@ public class Replicator extends Task {
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.slotsSalida.add(s);
+	}
+	
+
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return this.isEntradaMensaje();
 	}
 }

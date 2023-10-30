@@ -1,5 +1,7 @@
 package libreria.threader.task;
 
+import java.util.ArrayList;
+
 import libreria.Slot;
 
 /*
@@ -13,7 +15,7 @@ public class Translator extends Task {
 	private String buffer;
 	private Slot slotEntrada, slotSalida;
 	private String addString;
-	
+
 	public Translator(String addString) {
 		this.addString = addString;
 	}
@@ -24,17 +26,34 @@ public class Translator extends Task {
 		String buff = anyadirMensajeContextoACuerpo(addString, this.getBufferString());
 		slotSalida.setBufferString(buff, slotSalida);
 	}
+
+	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return slotEntrada != null;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(slotEntrada);
+		return aux;
+	}
 	
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(this.slotSalida);
+		return aux;
+	}
+
 	public String anyadirMensajeContextoACuerpo(String mensaje, String xml) {
 		int indice = xml.indexOf('>');
 		String primeraParte = xml.substring(0, indice + 1);
 		String segundaParte = xml.substring(indice + 1);
 		return primeraParte + mensaje + segundaParte;
-	}
-
-	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		slotEntrada.esperar();
 	}
 
 	@Override
@@ -58,5 +77,11 @@ public class Translator extends Task {
 	public String getBufferString() {
 		// TODO Auto-generated method stub
 		return this.buffer;
+	}
+	
+
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return this.isEntradaMensaje();
 	}
 }

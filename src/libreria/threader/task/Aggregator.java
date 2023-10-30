@@ -33,11 +33,34 @@ public class Aggregator extends Task {
 		super.realizarAccion();
 		String bufferAux = aggregatorTarea();
 		slotSalida.setBufferString(bufferAux, slotSalida);
+		setBuffers(new ArrayList<String>());
+	}
+	
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(this.slotSalida);
+		return aux;
 	}
 
 	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		slotEntrada.esperar();
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return this.isEntradaMensaje();
+	}
+
+	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return slotEntrada != null;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(slotEntrada);
+		return aux;
 	}
 
 	public String aggregatorTarea() {

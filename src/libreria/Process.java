@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -16,11 +18,19 @@ public class Process {
 	private static Process INSTANCE;
 	private ArrayList<List<Slot>> listaSlots;
 	public static boolean ESPERAR;
+	private ArrayList<Integer> listaSplitNElements;
+	private boolean terminar;
+	private ReentrantLock lock;
+	private Condition condition;
 
 	public Process() {
+		lock = new ReentrantLock();
+		setCondition(lock.newCondition());
+		terminar = false;
 		listaSlots = new ArrayList<List<Slot>>();
+		listaSplitNElements = new ArrayList<Integer>();
 	}
-	
+
 	public void ejecutar() {
 		for (List<Slot> list : listaSlots) {
 			for (Slot slot : list) {
@@ -132,7 +142,7 @@ public class Process {
 			this.listaSlots.add(slots);
 		}
 	}
-	
+
 	public void anyadirSlot(Task task1, Task task2) {
 		if (task1 != null && task2 != null) {
 			List<Slot> slots = new ArrayList<Slot>();
@@ -170,6 +180,46 @@ public class Process {
 		Port[] array = new Port[lista.size()];
 		lista.toArray(array); // fill the array
 		return array;
+	}
+
+	public ArrayList<Integer> getListaSplitNElements() {
+		return listaSplitNElements;
+	}
+
+	public void setListaSplitNElements(ArrayList<Integer> listaSplitNElements) {
+		this.listaSplitNElements = listaSplitNElements;
+	}
+
+	public boolean isTerminar() {
+		return terminar;
+	}
+
+	public void setTerminar(boolean terminar) {
+		this.terminar = terminar;
+		if (terminar) {
+			try {
+				lock.lock();
+			} finally {
+				condition.signalAll();
+				lock.unlock();
+			}
+		}
+	}
+
+	public Condition getCondition() {
+		return condition;
+	}
+
+	public void setCondition(Condition condition) {
+		this.condition = condition;
+	}
+
+	public ReentrantLock getLock() {
+		return lock;
+	}
+
+	public void setLock(ReentrantLock lock) {
+		this.lock = lock;
 	}
 
 }

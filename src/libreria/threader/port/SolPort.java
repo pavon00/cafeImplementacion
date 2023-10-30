@@ -22,15 +22,6 @@ public class SolPort extends Port {
 
 	@Override
 	public void realizarAccion() {
-		// esperar slot entrada;
-		if (inputSlot != null) {
-			try {
-				esperarNodosEntrada();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		// this.escribirFichero();
 		this.leerFichero();
 		try {
@@ -44,6 +35,20 @@ public class SolPort extends Port {
 		}
 	}
 
+	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return inputSlot != null && outputSlot != null;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(inputSlot);
+		return aux;
+	}
+
 	public void escribirFichero() {
 		escribirFichero(ruta, this);
 	}
@@ -52,7 +57,6 @@ public class SolPort extends Port {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		try {
-			System.out.println("ruta " + ruta);
 			fichero = getFileWriteCreateFile(ruta);
 			pw = new PrintWriter(fichero);
 			pw.println(Util.convertDocumentToString(port.getBuffer(), "/"));
@@ -78,12 +82,6 @@ public class SolPort extends Port {
 
 		FileWriter f = new FileWriter(ruta);
 		return f;
-	}
-
-	private void esperarNodosEntrada() throws InterruptedException {
-		if (inputSlot != null) {
-			inputSlot.esperar();
-		}
 	}
 
 	private void leerFichero() {
@@ -143,7 +141,7 @@ public class SolPort extends Port {
 
 	@Override
 	public void setSlotEntrada(Slot s) {
-		this.outputSlot = s;
+		this.inputSlot = s;
 	}
 
 	@Override
@@ -155,6 +153,19 @@ public class SolPort extends Port {
 	public void setBufferString(String string, Slot s) {
 		this.setBufferString(string);
 
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(this.outputSlot);
+		return aux;
+	}
+	
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return this.isEntradaMensaje();
 	}
 
 }

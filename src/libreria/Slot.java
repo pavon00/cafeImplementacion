@@ -17,12 +17,20 @@ public class Slot {
 	public void ejecutar() {
 		if (entrada != null) {
 			if (!entrada.isEjecutado()) {
-				entrada.run();
+				try {
+					entrada.start();
+				} catch (java.lang.IllegalThreadStateException e) {
+					// TODO: handle exception
+				}
 			}
 		}
 		if (salida != null) {
 			if (!salida.isEjecutado()) {
-				salida.run();
+				try {
+					salida.start();
+				} catch (java.lang.IllegalThreadStateException e) {
+					// TODO: handle exception
+				}
 			}
 		}
 	}
@@ -39,12 +47,6 @@ public class Slot {
 			return salida.getClass().equals(Task.class);
 		}
 		return false;
-	}
-
-	public synchronized void esperar() throws InterruptedException {
-		while (!entrada.isTerminado()) {
-			this.wait();
-		}
 	}
 
 	Slot(Port portEntrada, Task taskSalida) throws ParserConfigurationException, SAXException, IOException {

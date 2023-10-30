@@ -3,6 +3,7 @@ package libreria.threader.port;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 import libreria.Slot;
 
@@ -10,8 +11,10 @@ public class EntryPort extends Port {
 	
 	private Slot outputSlot;
 	private String ruta;
+	private boolean mandado;
 
 	public EntryPort(String ruta){
+		this.mandado = false;
 		this.ruta = ruta;
 	}
 
@@ -19,6 +22,21 @@ public class EntryPort extends Port {
 	public void realizarAccion() {
 		this.leerFichero();
 		outputSlot.setBufferString(getBufferString(), outputSlot);
+		this.mandado = true;
+	}
+	
+
+	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		return aux;
 	}
 
 	private void leerFichero() {
@@ -81,4 +99,18 @@ public class EntryPort extends Port {
 	public void setBufferString(String string, Slot s) {
 		this.setBufferString(string);
 	}
+
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(this.outputSlot);
+		return aux;
+	}
+
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return !mandado;
+	}
+
 }

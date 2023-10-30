@@ -32,6 +32,29 @@ public class ContextEnricher extends Task {
 	}
 
 	@Override
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return slotEntrada != null && slotContexto != null;
+	}
+	
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(this.slotSalida);
+		return aux;
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(slotEntrada);
+		aux.add(slotContexto);
+		return aux;
+	}
+
+	@Override
 	public String getBufferString() {
 		String aux1 = "";
 		for (String string : buffersEntrada) {
@@ -47,27 +70,27 @@ public class ContextEnricher extends Task {
 	@Override
 	public void realizarAccion() {
 		super.realizarAccion();
-
 		for (int i = 0; i < buffersContexto.size(); i++) {
 			String contextBuff = buffersContexto.get(i);
 			String entradaBuff = buffersEntrada.get(i);
 			String buff = anyadirMensajeContextoACuerpo(contextBuff, entradaBuff);
-			slotSalida.setBufferString(buff, slotSalida);
+			if (buff != null) {
+				slotSalida.setBufferString(buff, slotSalida);
+			}
 		}
+		this.buffersEntrada = new ArrayList<String>();
+		this.buffersContexto = new ArrayList<String>();
 
 	}
 
 	public String anyadirMensajeContextoACuerpo(String mensaje, String xml) {
+		if (mensaje.isEmpty() || xml.isEmpty()) {
+			return null;
+		}
 		int indice = xml.indexOf('>');
 		String primeraParte = xml.substring(0, indice + 1);
 		String segundaParte = xml.substring(indice + 1);
 		return primeraParte + mensaje + segundaParte;
-	}
-
-	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		slotEntrada.esperar();
-		slotContexto.esperar();
 	}
 
 	@Override
@@ -82,6 +105,12 @@ public class ContextEnricher extends Task {
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.slotSalida = s;
+	}
+	
+
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		return this.isEntradaMensaje();
 	}
 
 }

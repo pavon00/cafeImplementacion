@@ -13,12 +13,6 @@ public abstract class Task extends ThreaderAdapter {
 
 	@Override
 	public void realizarAccion() {
-		try {
-			esperarNodosEntrada();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		if (Process.ESPERAR) {
 			try {
 				sleep(1000);
@@ -31,13 +25,11 @@ public abstract class Task extends ThreaderAdapter {
 
 	}
 
-	public abstract void esperarNodosEntrada() throws InterruptedException;
-
-	public Process getProcess() {
+	public synchronized Process getProcess() {
 		return p;
 	}
 
-	public void setProcess(Process p) {
+	public synchronized void setProcess(Process p) {
 		this.p = p;
 	}
 

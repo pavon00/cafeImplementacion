@@ -28,14 +28,27 @@ public class Merger extends Task {
 			System.out.println("Merger enviar: " + this.slotsEntrada.size() + " puertos " + string);
 			slotSalida.setBufferString(string, slotSalida);
 		}
-
+		this.buffers = new ArrayList<String>();
 	}
 
 	@Override
-	public void esperarNodosEntrada() throws InterruptedException {
-		for (Slot slotEntrada : slotsEntrada) {
-			slotEntrada.esperar();
-		}
+	public boolean sePuedeEjecutar() {
+		// TODO Auto-generated method stub
+		return !slotsEntrada.isEmpty();
+	}
+
+	@Override
+	public ArrayList<Slot> getSlotsEntrada() {
+		// TODO Auto-generated method stub
+		return slotsEntrada;
+	}
+	
+	@Override
+	public ArrayList<Slot> getSlotsSalida() {
+		// TODO Auto-generated method stub
+		ArrayList<Slot> aux = new ArrayList<Slot>();
+		aux.add(this.slotSalida);
+		return aux;
 	}
 
 	@Override
@@ -71,5 +84,17 @@ public class Merger extends Task {
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.slotSalida = s;
+	}
+	
+
+	//espera hasta tener el mismo numero de mensajes en el buffer que elementos ha dividido el splitter
+	@Override
+	public boolean nodosEntradaHanMandadoMensaje() {
+		for (Integer nElements : this.getProcess().getListaSplitNElements()) {
+			if (nElements==this.buffers.size()) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

@@ -42,22 +42,23 @@ public class Main {
 		try {
 			p.anyadirSlot(order.getPort(), splitter);
 			p.anyadirSlot(splitter, distributor);
-			p.anyadirSlot(distributor, replicator1);
-			p.anyadirSlot(distributor, replicator2);
 			
+			p.anyadirSlot(distributor, replicator1);
 			p.anyadirSlot(replicator1, translator1);
-			p.anyadirSlot(replicator2, translator2);
 			p.anyadirSlot(translator1, BaristaHot.getPort());
-			p.anyadirSlot(translator2, BaristaCold.getPort());
 			p.anyadirSlot(replicator1, correlator1);
-			p.anyadirSlot(replicator2, correlator2);
 			p.anyadirSlot(BaristaHot.getPort(), correlator1);
-			p.anyadirSlot(BaristaCold.getPort(), correlator2);
 			p.anyadirSlot(correlator1, contextEnricher1);
 			p.anyadirSlot(correlator1, contextEnricher1);
-			p.anyadirSlot(correlator2, contextEnricher2);
-			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(contextEnricher1, merger);
+
+			p.anyadirSlot(distributor, replicator2);
+			p.anyadirSlot(replicator2, translator2);
+			p.anyadirSlot(translator2, BaristaCold.getPort());
+			p.anyadirSlot(replicator2, correlator2);
+			p.anyadirSlot(BaristaCold.getPort(), correlator2);
+			p.anyadirSlot(correlator2, contextEnricher2);
+			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(contextEnricher2, merger);
 			
 			p.anyadirSlot(merger, aggregator);
@@ -67,5 +68,13 @@ public class Main {
 			e.printStackTrace();
 		}
 		p.ejecutar();
+		
+		try {
+			waiter.getPort().join();
+			System.out.println("TERMINAR");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
