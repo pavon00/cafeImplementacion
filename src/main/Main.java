@@ -50,6 +50,7 @@ public class Main {
 		}
 	}
 
+	//añade los puertos de los conectores pasados por parametro y task a proceso y lo devuelve
 	public static Process getProcess(Connector orderConnector, Connector waiterConnector,
 			Connector BaristaColdConnector, Connector BaristaHotConnector) {
 		Splitter splitter = new Splitter("//drink");
