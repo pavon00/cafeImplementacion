@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -203,6 +205,18 @@ public class Util {
 		}
 		return aux;
 	}
+	
+	public static String obtenerContenido(String xml, String etiqueta) {
+        String patron = "<" + etiqueta + ">(.*?)</" + etiqueta + ">";
+        Pattern p = Pattern.compile(patron);
+        Matcher m = p.matcher(xml);
+
+        if (m.find()) {
+            return m.group(1);
+        } else {
+            return null;
+        }
+    }
 
 	public static String putPadre(String padre, String xml) {
 		padre = padre.replaceAll("\\s+", "");

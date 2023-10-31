@@ -3,8 +3,8 @@
 	<drinks>
 		<drink>
 			<name>cafe</name>
-			<type>hot</type><
-		/drink>
+			<type>hot</type>
+		</drink>
 		<drink>
 			<name>coca-cola</name>
 			<type>cold</type>

@@ -24,10 +24,24 @@ public class Aplicacion {
 		connector.setFuncion(() -> {
 			try {
 				ArrayList<String> aux = new ArrayList<String>();
-				System.out.println("\n"+consoleOutputName+" tiene "+this.getConnector().getPort().getBuffers().size()+" comandas:");
+				System.out.println("\n" + consoleOutputName + " tiene "
+						+ this.getConnector().getPort().getBuffers().size() + " llamadas:");
 				for (int i = 0; i < this.getConnector().getPort().getBuffers().size(); i++) {
-					System.out.println("          "+this.getConnector().getPort().getBuffers().get(i));
-					aux.add("<status>terminado</status>");
+					System.out.println("          " + this.getConnector().getPort().getBuffers().get(i));
+					String contenido = Util.obtenerContenido(this.getConnector().getPort().getBuffers().get(i), "tipo");
+					if (contenido != null) {
+						if (contenido.equals("privada")) {
+							System.out.println("EL TIPO DE LLAMADA ES PRIVADA POR LO TANTO SE DEBE COBRAR");
+							aux.add("<cobrar>si</cobrar>");
+						} else {
+							System.out.println("EL TIPO DE LLAMADA ES PRIVADA POR LO TANTO SE DEBE COBRAR");
+							aux.add("<cobrar>no</cobrar>");
+						}
+					} else {
+						System.out.println(
+								"EL TIPO DE LLAMADA NO HA SIDO INTRODUCIDO POR EL TRABAJADOR POR LO QUE ES PRIVADA Y SE DEBE COBRAR");
+						aux.add("<cobrar>si</cobrar>");
+					}
 				}
 				System.out.println("");
 				for (String string : aux) {

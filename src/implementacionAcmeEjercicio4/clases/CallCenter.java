@@ -20,9 +20,10 @@ public class CallCenter {
 			Process p = Process.getInstance();
 			p.setEjecutandoProceso(true);
 			String buffer = leerFichero(ruta, this);
-			System.out.println("Order pide las siguientes comandas: \n\n"+buffer+"\n");
+			System.out.println("Call center envia las siguientes llamadas: \n\n" + buffer + "\n");
 			if (buffer != null) {
 				this.connector.getPort().setBufferString(buffer);
+				System.out.println("notificar");
 				connector.notificar();
 			}
 		});

@@ -3,6 +3,7 @@ package libreria.threader.task;
 import java.util.ArrayList;
 
 import libreria.Slot;
+import libreria.Util;
 
 /*
  * Distribuye los mensajes de entrada hacia las salidas
@@ -17,10 +18,11 @@ public class Filter extends Task {
 	private ArrayList<String> buffers;
 	private ArrayList<Slot> slotsSalida;
 	private Slot slotEntrada;
-	private String filtrar;
+	private String nodoFiltrar, valorEsperado;
 
-	public Filter(String filtrar) {
-		this.filtrar = filtrar;
+	public Filter(String nodoFiltrar, String valorEsperado) {
+		this.nodoFiltrar = nodoFiltrar;
+		this.valorEsperado = valorEsperado;
 		setBuffers(new ArrayList<String>());
 		this.slotsSalida = new ArrayList<Slot>();
 	}
@@ -47,7 +49,7 @@ public class Filter extends Task {
 
 	@Override
 	public void setBufferString(String buffer, Slot s) {
-		//System.out.println("elemento: " + buffer);
+		// System.out.println("elemento: " + buffer);
 		ArrayList<String> buffersAux = getBuffers();
 		buffersAux.add(buffer);
 		setBuffers(buffersAux);
@@ -75,8 +77,11 @@ public class Filter extends Task {
 		super.realizarAccion();
 		for (Slot slot : this.slotsSalida) {
 			for (String string : buffers) {
-				if (string.contains(this.getFiltrar())) {
-					slot.setBufferString(string, slot);
+				if (string.contains(this.nodoFiltrar)) {
+					String valor = Util.obtenerContenido(string, this.nodoFiltrar);
+					if (valor.equals(this.valorEsperado)) {
+						slot.setBufferString(string, slot);
+					}
 				}
 			}
 		}
@@ -105,11 +110,19 @@ public class Filter extends Task {
 		setBuffers(new ArrayList<String>());
 	}
 
-	public String getFiltrar() {
-		return filtrar;
+	public String getNodoFiltrar() {
+		return nodoFiltrar;
 	}
 
-	public void setFiltrar(String filtrar) {
-		this.filtrar = filtrar;
+	public void setNodoFiltrar(String nodoFiltrar) {
+		this.nodoFiltrar = nodoFiltrar;
+	}
+
+	public String getValorEsperado() {
+		return valorEsperado;
+	}
+
+	public void setValorEsperado(String valorEsperado) {
+		this.valorEsperado = valorEsperado;
 	}
 }
