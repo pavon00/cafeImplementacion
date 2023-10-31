@@ -25,7 +25,7 @@ public class Merger extends Task {
 	public void realizarAccion() {
 		super.realizarAccion();
 		for (String string : buffers) {
-			System.out.println("Merger enviar: " + this.slotsEntrada.size() + " puertos " + string);
+			//System.out.println("Merger enviar: " + this.slotsEntrada.size() + " puertos " + string);
 			slotSalida.setBufferString(string, slotSalida);
 		}
 	}
@@ -52,7 +52,7 @@ public class Merger extends Task {
 
 	@Override
 	public void setBufferString(String buffer, Slot s) {
-		System.out.println("elemento Merger: " + buffer);
+		//System.out.println("elemento Merger: " + buffer);
 		ArrayList<String> buffersAux = getBuffers();
 		buffersAux.add(buffer);
 		setBuffers(buffersAux);

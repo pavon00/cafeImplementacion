@@ -85,7 +85,7 @@ public class Aggregator extends Task {
 
 	@Override
 	public void setBufferString(String buffer, Slot s) {
-		System.out.println("elemento Aggregator: " + buffer);
+		//System.out.println("elemento Aggregator: " + buffer);
 		ArrayList<String> buffersAux = getBuffers();
 		buffersAux.add(buffer);
 		setBuffers(buffersAux);

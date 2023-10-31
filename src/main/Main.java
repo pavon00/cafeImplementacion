@@ -24,8 +24,8 @@ public class Main {
 
 		Waiter waiter = new Waiter(waiterConnector);
 		waiter.escribirFichero("waiter.xml");
-		Barista baristaHot = new Barista(BaristaHotConnector);
-		Barista baristaCold = new Barista(BaristaColdConnector);
+		Barista baristaHot = new Barista(BaristaHotConnector, "Barista Hot");
+		Barista baristaCold = new Barista(BaristaColdConnector, "Barista Cold");
 		baristaHot.procesarInformacion();
 		baristaCold.procesarInformacion();
 

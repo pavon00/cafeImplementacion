@@ -45,7 +45,7 @@ public class Translator extends Task {
 
 	@Override
 	public void setBufferString(String buffer, Slot s) {
-		System.out.println("elemento: " + buffer);
+		//System.out.println("elemento: " + buffer);
 		ArrayList<String> buffersAux = getBuffers();
 		buffersAux.add(buffer);
 		setBuffers(buffersAux);

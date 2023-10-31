@@ -12,20 +12,24 @@ import libreria.Util;
 
 public class Barista {
 	private Connector connector;
+	private String consoleOutputName;
 
-	public Barista(Connector connector) {
+	public Barista(Connector connector, String consoleOutputName) {
 		// TODO Auto-generated constructor stub
 		this.connector = connector;
+		this.consoleOutputName = consoleOutputName;
 	}
 
 	public void procesarInformacion() {
 		connector.setFuncion(() -> {
 			try {
 				ArrayList<String> aux = new ArrayList<String>();
+				System.out.println("\n"+consoleOutputName+" tiene "+this.getConnector().getPort().getBuffers().size()+" comandas:");
 				for (int i = 0; i < this.getConnector().getPort().getBuffers().size(); i++) {
-					// System.out.println("ssssssssssssssssssssssssssaaaaaaaaaaaa"+this.getConnector().getPort().getBuffers().size()+this.getConnector().getPort().getBuffers().get(i));
+					System.out.println("          "+this.getConnector().getPort().getBuffers().get(i));
 					aux.add("<status>terminado</status>");
 				}
+				System.out.println("");
 				for (String string : aux) {
 					ArrayList<Slot> slots = this.getConnector().getPort().getSlotsSalida();
 					for (Slot s : slots) {

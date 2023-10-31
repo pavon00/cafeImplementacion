@@ -27,8 +27,8 @@ public class Waiter {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		try {
-			System.out.print("\n\n" + contador + "\n\n\n"
-					+ Util.convertDocumentToString(waiter.getConnector().getPort().getBuffer(), "/") + "\n\n\n\n\n");
+			System.out.print("\nWaiter prepara pedido numero " + contador + ":\n\n"
+					+ Util.convertDocumentToString(waiter.getConnector().getPort().getBuffer(), "/") + "\n\n\n");
 			contador++;
 			fichero = getFileWriteCreateFile(ruta);
 			pw = new PrintWriter(fichero);

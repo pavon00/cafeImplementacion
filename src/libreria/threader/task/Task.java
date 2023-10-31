@@ -21,7 +21,7 @@ public abstract class Task extends ThreaderAdapter {
 				e1.printStackTrace();
 			}
 		}
-		System.out.println("---  " + this.getClass() + "  -----Salir de espera, buffer: " + this.getBufferString());
+		System.out.println("---  " + this.getClass() + "  ---             REALIZA ACCION");
 
 	}
 

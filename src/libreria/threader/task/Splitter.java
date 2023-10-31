@@ -31,7 +31,7 @@ public class Splitter extends Task {
 			bufferAux = Util.splitXmlStringToElement(this.getBufferString(), xPathExpression);
 			int nElements = Util.splitXmlStringGetNElements(this.getBufferString(), xPathExpression);
 			setIdProceso(nElements);
-			System.out.println(bufferAux);
+			//System.out.println(bufferAux);
 			for (String string : bufferAux) {
 				slotSalida.setBufferString(string, slotSalida);
 			}

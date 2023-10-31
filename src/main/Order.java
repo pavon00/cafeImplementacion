@@ -20,6 +20,7 @@ public class Order {
 			Process p = Process.getInstance();
 			p.setEjecutandoProceso(true);
 			String buffer = leerFichero(ruta, this);
+			System.out.println("Order pide las siguientes comandas: \n\n"+buffer+"\n");
 			if (buffer != null) {
 				this.connector.getPort().setBufferString(buffer);
 				connector.notificar();
@@ -54,7 +55,6 @@ public class Order {
 			String linea = "";
 			while ((linea = br.readLine()) != null)
 				stringFichero = stringFichero + linea;
-			System.out.println("Leido " + stringFichero);
 			return stringFichero;
 		} catch (Exception e) {
 			e.printStackTrace();
