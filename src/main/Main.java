@@ -80,18 +80,18 @@ public class Main {
 
 			p.anyadirSlot(distributor, replicator1);
 			p.anyadirSlot(replicator1, translator1);
-			p.anyadirSlot(translator1, BaristaHotConnector.getPort());
+			p.anyadirSlot(translator1, BaristaColdConnector.getPort());
 			p.anyadirSlot(replicator1, correlator1);
-			p.anyadirSlot(BaristaHotConnector.getPort(), correlator1);
+			p.anyadirSlot(BaristaColdConnector.getPort(), correlator1);
 			p.anyadirSlot(correlator1, contextEnricher1);
 			p.anyadirSlot(correlator1, contextEnricher1);
 			p.anyadirSlot(contextEnricher1, merger);
 
 			p.anyadirSlot(distributor, replicator2);
 			p.anyadirSlot(replicator2, translator2);
-			p.anyadirSlot(translator2, BaristaColdConnector.getPort());
+			p.anyadirSlot(translator2, BaristaHotConnector.getPort());
 			p.anyadirSlot(replicator2, correlator2);
-			p.anyadirSlot(BaristaColdConnector.getPort(), correlator2);
+			p.anyadirSlot(BaristaHotConnector.getPort(), correlator2);
 			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(contextEnricher2, merger);
