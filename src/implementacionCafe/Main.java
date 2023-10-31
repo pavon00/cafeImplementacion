@@ -1,6 +1,9 @@
-package main;
+package implementacionCafe;
 
 import libreria.Process;
+import implementacionCafe.clases.Barista;
+import implementacionCafe.clases.Order;
+import implementacionCafe.clases.Waiter;
 import libreria.Connector;
 import libreria.Connector.Tipo;
 import libreria.threader.task.Aggregator;

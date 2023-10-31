@@ -1,4 +1,4 @@
-package main;
+package implementacionCafe.clases;
 
 import java.io.File;
 import java.io.FileWriter;
