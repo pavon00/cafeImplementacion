@@ -14,7 +14,7 @@ public class Order {
 		// TODO Auto-generated constructor stub
 		this.connector = connector;
 	}
-	
+
 	public void leerFichero(String ruta) {
 		connector.setFuncion(() -> {
 			Process p = Process.getInstance();
@@ -24,15 +24,15 @@ public class Order {
 				this.connector.getPort().setBufferString(buffer);
 				connector.notificar();
 			}
-        });
+		});
 		connector.ejecutar();
 	}
-	
+
 	public void terminar() {
 		connector.setFuncion(() -> {
 			Process p = Process.getInstance();
 			p.setTerminar(true);
-        });
+		});
 		connector.ejecutar();
 	}
 
@@ -54,7 +54,7 @@ public class Order {
 			String linea = "";
 			while ((linea = br.readLine()) != null)
 				stringFichero = stringFichero + linea;
-			System.out.println("Leido "+stringFichero);
+			System.out.println("Leido " + stringFichero);
 			return stringFichero;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +73,6 @@ public class Order {
 		return null;
 	}
 
-
 	public Connector getConnector() {
 		return connector;
 	}
@@ -81,5 +80,5 @@ public class Order {
 	public void setConnector(Connector connector) {
 		this.connector = connector;
 	}
-	
+
 }

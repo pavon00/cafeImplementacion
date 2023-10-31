@@ -14,6 +14,7 @@ import libreria.Slot;
 public class ContextEnricher extends Task {
 
 	private ArrayList<String> buffersEntrada, buffersContexto;
+
 	public synchronized ArrayList<String> getBuffersEntrada() {
 		return buffersEntrada;
 	}
@@ -29,7 +30,6 @@ public class ContextEnricher extends Task {
 	public synchronized void setBuffersContexto(ArrayList<String> buffersContexto) {
 		this.buffersContexto = buffersContexto;
 	}
-
 
 	private Slot slotEntrada, slotContexto, slotSalida;
 
@@ -53,7 +53,7 @@ public class ContextEnricher extends Task {
 		// TODO Auto-generated method stub
 		return slotEntrada != null && slotContexto != null;
 	}
-	
+
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub
@@ -87,8 +87,8 @@ public class ContextEnricher extends Task {
 	@Override
 	public void realizarAccion() {
 		super.realizarAccion();
-		for (int i = 0; i <  getBuffersContexto().size(); i++) {
-			String contextBuff =  getBuffersContexto().get(i);
+		for (int i = 0; i < getBuffersContexto().size(); i++) {
+			String contextBuff = getBuffersContexto().get(i);
 			String entradaBuff = getBuffersEntrada().get(i);
 			String buff = anyadirMensajeContextoACuerpo(contextBuff, entradaBuff);
 			if (buff != null) {
@@ -121,7 +121,6 @@ public class ContextEnricher extends Task {
 	public void setSlotSalida(Slot s) {
 		this.slotSalida = s;
 	}
-	
 
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {

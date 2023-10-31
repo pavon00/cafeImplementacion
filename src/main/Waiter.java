@@ -10,7 +10,7 @@ import libreria.Util;
 
 public class Waiter {
 	private Connector connector;
-	private static int contador=1;
+	private static int contador = 1;
 
 	public Waiter(Connector connector) {
 		// TODO Auto-generated constructor stub
@@ -20,14 +20,15 @@ public class Waiter {
 	public void escribirFichero(String ruta) {
 		connector.setFuncion(() -> {
 			escribirFichero(ruta, this);
-        });
+		});
 	}
-	
+
 	public static void escribirFichero(String ruta, Waiter waiter) {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		try {
-			System.out.print("\n\n"+contador+"\n\n\n"+Util.convertDocumentToString(waiter.getConnector().getPort().getBuffer(), "/")+"\n\n\n\n\n");
+			System.out.print("\n\n" + contador + "\n\n\n"
+					+ Util.convertDocumentToString(waiter.getConnector().getPort().getBuffer(), "/") + "\n\n\n\n\n");
 			contador++;
 			fichero = getFileWriteCreateFile(ruta);
 			pw = new PrintWriter(fichero);
@@ -45,7 +46,6 @@ public class Waiter {
 			}
 		}
 	}
-	
 
 	private static FileWriter getFileWriteCreateFile(String ruta) throws IOException {
 		File file = new File(ruta);
@@ -57,7 +57,6 @@ public class Waiter {
 		return f;
 	}
 
-
 	public Connector getConnector() {
 		return connector;
 	}
@@ -65,5 +64,5 @@ public class Waiter {
 	public void setConnector(Connector connector) {
 		this.connector = connector;
 	}
-	
+
 }

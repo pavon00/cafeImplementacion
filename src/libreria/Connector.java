@@ -7,15 +7,15 @@ import libreria.threader.port.FactorySolPort;
 import libreria.threader.port.Port;
 
 public class Connector {
-	
+
 	public interface ConnectorFuncion {
-	    void ejecutar();
+		void ejecutar();
 	}
-	
+
 	public enum Tipo {
 		Entrada, Salida, Sol;
 	}
-	
+
 	private Port port;
 	private ConnectorFuncion funcion;
 	private FactoryEntryPort factoryEntryPort;
@@ -45,16 +45,15 @@ public class Connector {
 		}
 
 	}
-	
+
 	public void ejecutar() {
 		this.port.ejecutar();
 	}
-	
+
 	public void notificar() {
 		this.port.setEntradaMensaje(true);
 		ThreaderAdapter.notificar();
 	}
-
 
 	public Port getPort() {
 		return port;

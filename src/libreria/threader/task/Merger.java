@@ -41,7 +41,7 @@ public class Merger extends Task {
 		// TODO Auto-generated method stub
 		return slotsEntrada;
 	}
-	
+
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub
@@ -84,13 +84,13 @@ public class Merger extends Task {
 	public void setSlotSalida(Slot s) {
 		this.slotSalida = s;
 	}
-	
 
-	//espera hasta tener el mismo numero de mensajes en el buffer que elementos ha dividido el splitter
+	// espera hasta tener el mismo numero de mensajes en el buffer que elementos ha
+	// dividido el splitter
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		for (Integer nElements : this.getProcess().getListaSplitNElements()) {
-			if (nElements==this.buffers.size()) {
+			if (nElements == this.buffers.size()) {
 				return true;
 			}
 		}

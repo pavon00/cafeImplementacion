@@ -82,9 +82,8 @@ public class XPathParserDemo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		ArrayList<String> buffers = new ArrayList<String>();
-		
 
 		try {
 			// Carga del documento xml
@@ -105,13 +104,13 @@ public class XPathParserDemo {
 				xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 				xform.transform(new DOMSource(node), new StreamResult(buf));
 				buffers.add(buf.toString());
-				System.out.println("elemento "+i+": "+buf.toString());
+				System.out.println("elemento " + i + ": " + buf.toString());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		NodeList nodos = null;
 		try {
 			Document documento = Util.convertStringToDocument(buffer);
@@ -137,7 +136,7 @@ public class XPathParserDemo {
 				e1.printStackTrace();
 			}
 		}
-		
+
 		if (nodos != null) {
 			for (int i = 0; i < nodos.getLength(); i++) {
 				Node nNode = nodos.item(i);

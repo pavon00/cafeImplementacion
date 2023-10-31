@@ -60,7 +60,7 @@ public abstract class ThreaderAdapter extends Thread {
 	public abstract void setSlotSalida(Slot s);
 
 	public abstract ArrayList<Slot> getSlotsSalida();
-	
+
 	public abstract void clearBuffer();
 
 	public abstract void setBufferString(String string, Slot s);

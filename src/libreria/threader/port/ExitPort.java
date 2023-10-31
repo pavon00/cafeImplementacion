@@ -9,18 +9,18 @@ public class ExitPort extends Port {
 
 	private Slot inputSlot;
 	private String ruta;
-	
-	public ExitPort(Connector con, String ruta){
+
+	public ExitPort(Connector con, String ruta) {
 		super(con);
 		this.ruta = ruta;
 	}
-	
+
 	@Override
 	public void realizarAccion() {
 		// esperar slot entrada
 		this.getConnector().getFuncion().ejecutar();
 	}
-	
+
 	@Override
 	public boolean sePuedeEjecutar() {
 		// TODO Auto-generated method stub
@@ -50,6 +50,7 @@ public class ExitPort extends Port {
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
 	}
+
 	@Override
 	public void setSlotEntrada(Slot s) {
 		// TODO Auto-generated method stub
@@ -59,7 +60,7 @@ public class ExitPort extends Port {
 	@Override
 	public void setSlotSalida(Slot s) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -73,7 +74,7 @@ public class ExitPort extends Port {
 		ArrayList<Slot> aux = new ArrayList<Slot>();
 		return aux;
 	}
-	
+
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		return this.isEntradaMensaje();
@@ -82,7 +83,7 @@ public class ExitPort extends Port {
 	@Override
 	public void ejecutar() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

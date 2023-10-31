@@ -34,7 +34,7 @@ public class Aggregator extends Task {
 		String bufferAux = aggregatorTarea();
 		slotSalida.setBufferString(bufferAux, slotSalida);
 	}
-	
+
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub

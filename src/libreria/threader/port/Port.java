@@ -19,7 +19,7 @@ public abstract class Port extends ThreaderAdapter {
 	private Message m;
 	private Connector con;
 	// si te confunde hay casos en los que no se usa algun slot
-	
+
 	public abstract void ejecutar();
 
 	public Port(Connector con) {
@@ -42,14 +42,14 @@ public abstract class Port extends ThreaderAdapter {
 	public void setBuffers(ArrayList<String> lista) {
 		m.setBuffers(lista);
 	}
-	
+
 	public Document getBuffer() throws ParserConfigurationException, SAXException, IOException {
 		return Util.convertStringToDocument(getBufferString());
 	}
 
 	public void setBufferString(String m) {
 		this.m.setBuffer(m);
-		
+
 	}
 
 	public void setBuffer(Document m) throws XPathExpressionException, ParserConfigurationException, SAXException,

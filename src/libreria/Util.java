@@ -107,8 +107,9 @@ public class Util {
 		return builder.parse(input);
 	}
 
-	public static String convertDocumentToString(Document documento, String xPathExpression) throws ParserConfigurationException, SAXException,
-			IOException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
+	public static String convertDocumentToString(Document documento, String xPathExpression)
+			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
+			TransformerFactoryConfigurationError, TransformerException {
 		XPath xPath = XPathFactory.newInstance().newXPath();
 		XPathExpression exp = xPath.compile(xPathExpression);
 		NodeList nl = (NodeList) exp.evaluate(documento, XPathConstants.NODESET);
@@ -179,7 +180,6 @@ public class Util {
 		return getXmlxPath(convertStringToDocument(string), xPathExpression);
 
 	}
-
 
 	private static ArrayList<String> getXmlxPath(Document documento, String xPathExpression)
 			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,

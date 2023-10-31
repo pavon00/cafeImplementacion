@@ -36,7 +36,7 @@ public class Replicator extends Task {
 		aux.add(slotEntrada);
 		return aux;
 	}
-	
+
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub
@@ -89,7 +89,6 @@ public class Replicator extends Task {
 	public void setSlotSalida(Slot s) {
 		this.slotsSalida.add(s);
 	}
-	
 
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {

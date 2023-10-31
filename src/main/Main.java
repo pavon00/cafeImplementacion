@@ -19,9 +19,9 @@ public class Main {
 		Connector BaristaColdConnector = new Connector(Tipo.Sol, "baristaHot.xml");
 		Connector BaristaHotConnector = new Connector(Tipo.Sol, "baristaCold.xml");
 		getProcess(orderConnector, waiterConnector, BaristaColdConnector, BaristaHotConnector).ejecutar();
-		
+
 		Order order = new Order(orderConnector);
-		
+
 		Waiter waiter = new Waiter(waiterConnector);
 		waiter.escribirFichero("waiter.xml");
 		Barista baristaHot = new Barista(BaristaHotConnector);
@@ -38,10 +38,9 @@ public class Main {
 		order.leerFichero("order7.xml");
 		order.leerFichero("order8.xml");
 		order.leerFichero("order9.xml");
-		
+
 		order.terminar();
-		
-		
+
 		try {
 			waiterConnector.getPort().join();
 			System.out.println("TERMINAR");
@@ -50,8 +49,9 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	
-	public static Process getProcess(Connector orderConnector, Connector waiterConnector, Connector BaristaColdConnector, Connector BaristaHotConnector) {
+
+	public static Process getProcess(Connector orderConnector, Connector waiterConnector,
+			Connector BaristaColdConnector, Connector BaristaHotConnector) {
 		Splitter splitter = new Splitter("//drink");
 		Distributor distributor = new Distributor();
 		distributor.direccionar(1, "/drink[type='hot']");
@@ -76,7 +76,7 @@ public class Main {
 		try {
 			p.anyadirSlot(orderConnector.getPort(), splitter);
 			p.anyadirSlot(splitter, distributor);
-			
+
 			p.anyadirSlot(distributor, replicator1);
 			p.anyadirSlot(replicator1, translator1);
 			p.anyadirSlot(translator1, BaristaHotConnector.getPort());
@@ -94,7 +94,7 @@ public class Main {
 			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(correlator2, contextEnricher2);
 			p.anyadirSlot(contextEnricher2, merger);
-			
+
 			p.anyadirSlot(merger, aggregator);
 			p.anyadirSlot(aggregator, waiterConnector.getPort());
 		} catch (Exception e) {
@@ -103,5 +103,5 @@ public class Main {
 		}
 		return p;
 	}
-	
+
 }

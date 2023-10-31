@@ -107,7 +107,7 @@ public class Correlator extends Task {
 		}
 
 		for (int i = 0; i < listaConteo.size(); i++) {
-			//System.out.println("conteo posicion "+i+": "+listaConteo.get(i));
+			// System.out.println("conteo posicion "+i+": "+listaConteo.get(i));
 		}
 
 		int aux = listaConteo.get(0);
@@ -125,7 +125,7 @@ public class Correlator extends Task {
 	@Override
 	public void clearBuffer() {
 		// TODO Auto-generated method stub
-		setBuffers(new ArrayList<String>()); 
+		setBuffers(new ArrayList<String>());
 		this.nSlotEntrada = new ArrayList<Integer>();
 	}
 

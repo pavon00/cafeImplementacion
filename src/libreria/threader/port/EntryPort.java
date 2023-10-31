@@ -9,7 +9,7 @@ import libreria.Process;
 import libreria.Slot;
 
 public class EntryPort extends Port {
-	
+
 	public EntryPort(Connector con) {
 		super(con);
 		// TODO Auto-generated constructor stub
@@ -44,7 +44,6 @@ public class EntryPort extends Port {
 			lock.unlock();
 		}
 	}
-	
 
 	@Override
 	public boolean sePuedeEjecutar() {
@@ -59,11 +58,9 @@ public class EntryPort extends Port {
 		return aux;
 	}
 
-
 	public Slot getSlotSalida() {
 		return outputSlot;
 	}
-
 
 	@Override
 	public void setSlotSalida(Slot s) {
@@ -73,7 +70,7 @@ public class EntryPort extends Port {
 	@Override
 	public void setSlotEntrada(Slot s) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

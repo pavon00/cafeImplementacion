@@ -18,7 +18,6 @@ public class Splitter extends Task {
 	private String buffer;
 	private Slot slotEntrada, slotSalida;
 	private String xPathExpression;
-	
 
 	public Splitter(String xPathExpression) {
 		this.setxPathExpression(xPathExpression);
@@ -41,18 +40,18 @@ public class Splitter extends Task {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void setIdProceso(int nElements) {
 		this.getProcess().getListaSplitNElements().add(nElements);
 	}
-	
+
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub
 		ArrayList<Slot> aux = new ArrayList<Slot>();
 		aux.add(this.slotSalida);
 		return aux;
-	} 
+	}
 
 	@Override
 	public boolean sePuedeEjecutar() {
@@ -98,7 +97,6 @@ public class Splitter extends Task {
 	public void setxPathExpression(String xPathExpression) {
 		this.xPathExpression = xPathExpression;
 	}
-	
 
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
@@ -108,7 +106,7 @@ public class Splitter extends Task {
 	@Override
 	public void clearBuffer() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
