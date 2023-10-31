@@ -99,6 +99,7 @@ public class Util {
 
 	public static Document convertStringToDocument(String xmlStr)
 			throws ParserConfigurationException, SAXException, IOException {
+		xmlStr = xmlStr.replaceAll("\\s+", "");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		StringBuilder xmlStringBuilder = new StringBuilder();
@@ -160,6 +161,7 @@ public class Util {
 	public static ArrayList<String> splitXmlStringToElement(String string, String xPathExpression)
 			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
 			TransformerFactoryConfigurationError, TransformerException {
+		string = string.replaceAll("\\s+", "");
 
 		return splitDocumentToStrings(convertStringToDocument(string), xPathExpression);
 
@@ -168,6 +170,7 @@ public class Util {
 	public static int splitXmlStringGetNElements(String string, String xPathExpression)
 			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException,
 			TransformerFactoryConfigurationError, TransformerException {
+		string = string.replaceAll("\\s+", "");
 
 		return splitDocumentToStringsNElement(convertStringToDocument(string), xPathExpression);
 
@@ -202,6 +205,7 @@ public class Util {
 	}
 
 	public static String putPadre(String padre, String xml) {
+		padre = padre.replaceAll("\\s+", "");
 		String aux = "<" + padre + ">" + xml + "</" + padre + ">";
 		return aux;
 	}
