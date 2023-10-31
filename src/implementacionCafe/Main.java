@@ -17,10 +17,10 @@ import libreria.threader.task.Translator;
 
 public class Main {
 	public static void main(String[] args) {
-		Connector orderConnector = new Connector(Tipo.Entrada, "order9.xml");
-		Connector waiterConnector = new Connector(Tipo.Salida, "waiter.xml");
-		Connector BaristaColdConnector = new Connector(Tipo.Sol, "baristaHot.xml");
-		Connector BaristaHotConnector = new Connector(Tipo.Sol, "baristaCold.xml");
+		Connector orderConnector = new Connector(Tipo.Entrada);
+		Connector waiterConnector = new Connector(Tipo.Salida);
+		Connector BaristaColdConnector = new Connector(Tipo.Sol);
+		Connector BaristaHotConnector = new Connector(Tipo.Sol);
 		getProcess(orderConnector, waiterConnector, BaristaColdConnector, BaristaHotConnector).ejecutar();
 
 		Order order = new Order(orderConnector);

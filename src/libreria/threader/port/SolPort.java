@@ -8,11 +8,9 @@ import libreria.Slot;
 public class SolPort extends Port {
 
 	private Slot inputSlot, outputSlot;
-	private String ruta;
 
-	public SolPort(Connector con, String ruta) {
+	public SolPort(Connector con) {
 		super(con);
-		this.ruta = ruta;
 	}
 
 	@Override
@@ -40,14 +38,6 @@ public class SolPort extends Port {
 
 	public Slot getSlotSalida() {
 		return outputSlot;
-	}
-
-	public String getRuta() {
-		return ruta;
-	}
-
-	public void setRuta(String ruta) {
-		this.ruta = ruta;
 	}
 
 	@Override

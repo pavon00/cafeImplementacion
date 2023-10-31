@@ -22,21 +22,21 @@ public class Connector {
 	private FactoryExitPort factoryExitPort;
 	private FactorySolPort factorySolPort;
 
-	public Connector(Tipo t, String ruta) {
+	public Connector(Tipo t) {
 		switch (t) {
 		case Entrada:
 			factoryEntryPort = new FactoryEntryPort();
-			this.port = factoryEntryPort.crear(this, ruta);
+			this.port = factoryEntryPort.crear(this);
 			this.port.setConnector(this);
 			break;
 		case Salida:
 			factoryExitPort = new FactoryExitPort();
-			this.port = factoryExitPort.crear(this, ruta);
+			this.port = factoryExitPort.crear(this);
 			this.port.setConnector(this);
 			break;
 		case Sol:
 			factorySolPort = new FactorySolPort();
-			this.port = factorySolPort.crear(this, ruta);
+			this.port = factorySolPort.crear(this);
 			this.port.setConnector(this);
 			break;
 

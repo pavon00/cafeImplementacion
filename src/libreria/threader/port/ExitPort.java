@@ -8,11 +8,9 @@ import libreria.Slot;
 public class ExitPort extends Port {
 
 	private Slot inputSlot;
-	private String ruta;
 
-	public ExitPort(Connector con, String ruta) {
+	public ExitPort(Connector con) {
 		super(con);
-		this.ruta = ruta;
 	}
 
 	@Override
@@ -41,14 +39,6 @@ public class ExitPort extends Port {
 
 	public void setInputSlot(Slot inputSlot) {
 		this.inputSlot = inputSlot;
-	}
-
-	public String getRuta() {
-		return ruta;
-	}
-
-	public void setRuta(String ruta) {
-		this.ruta = ruta;
 	}
 
 	@Override
