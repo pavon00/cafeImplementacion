@@ -28,7 +28,6 @@ public class Merger extends Task {
 			System.out.println("Merger enviar: " + this.slotsEntrada.size() + " puertos " + string);
 			slotSalida.setBufferString(string, slotSalida);
 		}
-		this.buffers = new ArrayList<String>();
 	}
 
 	@Override
@@ -59,11 +58,11 @@ public class Merger extends Task {
 		setBuffers(buffersAux);
 	}
 
-	public ArrayList<String> getBuffers() {
+	public synchronized ArrayList<String> getBuffers() {
 		return buffers;
 	}
 
-	public void setBuffers(ArrayList<String> buffers) {
+	public synchronized void setBuffers(ArrayList<String> buffers) {
 		this.buffers = buffers;
 	}
 
@@ -96,5 +95,12 @@ public class Merger extends Task {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		this.buffers = new ArrayList<String>();
+		this.getProcess().setListaSplitNElements(new ArrayList<Integer>());
 	}
 }

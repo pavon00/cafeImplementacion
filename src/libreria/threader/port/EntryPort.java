@@ -1,16 +1,48 @@
 package libreria.threader.port;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
+import libreria.Connector;
+import libreria.Process;
 import libreria.Slot;
 
 public class EntryPort extends Port {
 	
+	public EntryPort(Connector con) {
+		super(con);
+		// TODO Auto-generated constructor stub
+	}
+
 	private Slot outputSlot;
 
 	@Override
 	public void realizarAccion() {
-		outputSlot.setBufferString(getBufferString(), outputSlot);
+		for (String s : getBuffers()) {
+			outputSlot.setBufferString(s, outputSlot);
+		}
+	}
+
+	@Override
+	public void ejecutar() {
+		Process p = Process.getInstance();
+		ReentrantLock lock = p.getLock();
+		Condition c = p.getColaProcesos();
+		try {
+			lock.lock();
+		} finally {
+			while (p.isEjecutandoProceso()) {
+				try {
+					c.await();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			this.getConnector().getFuncion().ejecutar();
+			lock.unlock();
+		}
 	}
 	
 
@@ -60,6 +92,12 @@ public class EntryPort extends Port {
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		return this.isEntradaMensaje();
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffers(new ArrayList<String>());
 	}
 
 }

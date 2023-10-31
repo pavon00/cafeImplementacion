@@ -23,9 +23,18 @@ import libreria.Util;
 public class Distributor extends Task {
 
 	private ArrayList<String> buffers, xPathExpressions;
+
 	private ArrayList<Slot> slotsSalida;
 	private Slot slotEntrada;
 	private ArrayList<Integer> nSlotXPathExpresions;
+
+	public synchronized ArrayList<String> getBuffers() {
+		return buffers;
+	}
+
+	public synchronized void setBuffers(ArrayList<String> buffers) {
+		this.buffers = buffers;
+	}
 
 	public Distributor() {
 		this.slotsSalida = new ArrayList<Slot>();
@@ -44,7 +53,6 @@ public class Distributor extends Task {
 		super.realizarAccion();
 		try {
 			distributorTask();
-			this.buffers = new ArrayList<String>();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,18 +73,17 @@ public class Distributor extends Task {
 		return aux;
 	}
 
-	
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub
 		return this.slotsSalida;
 	}
-	
+
 	private void distributorTask() throws XPathExpressionException, ParserConfigurationException, SAXException,
 			IOException, TransformerFactoryConfigurationError, TransformerException {
 		for (int i = 0; i < xPathExpressions.size(); i++) {
 			Integer nSlot = nSlotXPathExpresions.get(i);
-			for (String buff : buffers) {
+			for (String buff : getBuffers()) {
 				ArrayList<String> list = Util.getXmlxPath(buff, xPathExpressions.get(i));
 				for (String string : list) {
 					Slot sl = slotsSalida.get(nSlot);
@@ -89,7 +96,7 @@ public class Distributor extends Task {
 
 	@Override
 	public void setBufferString(String bufferAux, Slot s) {
-		this.buffers.add(bufferAux);
+		getBuffers().add(bufferAux);
 	}
 
 	@Override
@@ -115,6 +122,12 @@ public class Distributor extends Task {
 	public boolean nodosEntradaHanMandadoMensaje() {
 		// TODO Auto-generated method stub
 		return this.isEntradaMensaje();
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffers(new ArrayList<String>());
 	}
 
 }

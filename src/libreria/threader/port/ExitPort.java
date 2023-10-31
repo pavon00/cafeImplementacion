@@ -1,27 +1,24 @@
 package libreria.threader.port;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import libreria.Connector;
 import libreria.Slot;
-import libreria.Util;
 
 public class ExitPort extends Port {
 
 	private Slot inputSlot;
 	private String ruta;
 	
-	public ExitPort(String ruta){
+	public ExitPort(Connector con, String ruta){
+		super(con);
 		this.ruta = ruta;
 	}
 	
 	@Override
 	public void realizarAccion() {
 		// esperar slot entrada
-		this.escribirFichero();
+		this.getConnector().getFuncion().ejecutar();
 	}
 	
 	@Override
@@ -37,44 +34,6 @@ public class ExitPort extends Port {
 		aux.add(inputSlot);
 		return aux;
 	}
-	
-	public void escribirFichero() {
-		escribirFichero(ruta, this);
-	}
-	
-	public static void escribirFichero(String ruta, Port port) {
-		FileWriter fichero = null;
-		PrintWriter pw = null;
-		try {
-			System.out.println("ruta "+ruta);
-			fichero = getFileWriteCreateFile(ruta);
-			pw = new PrintWriter(fichero);
-			pw.println(Util.convertDocumentToString(port.getBuffer(), "/"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// Nuevamente aprovechamos el finally para
-				// asegurarnos que se cierra el fichero.
-				if (null != fichero)
-					fichero.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-	}
-	
-
-	private static FileWriter getFileWriteCreateFile(String ruta) throws IOException {
-		File file = new File(ruta);
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-
-		FileWriter f = new FileWriter(ruta);
-		return f;
-	}
-
 
 	public Slot getInputSlot() {
 		return inputSlot;
@@ -118,6 +77,18 @@ public class ExitPort extends Port {
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		return this.isEntradaMensaje();
+	}
+
+	@Override
+	public void ejecutar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffers(new ArrayList<String>());
 	}
 
 }

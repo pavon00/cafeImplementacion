@@ -15,6 +15,15 @@ import libreria.Slot;
 public class Correlator extends Task {
 
 	private ArrayList<String> buffers;
+
+	public synchronized ArrayList<String> getBuffers() {
+		return buffers;
+	}
+
+	public synchronized void setBuffers(ArrayList<String> buffers) {
+		this.buffers = buffers;
+	}
+
 	private ArrayList<Slot> slotsEntrada, slotsSalida;
 	private ArrayList<Integer> nSlotEntrada;
 
@@ -34,7 +43,6 @@ public class Correlator extends Task {
 			Slot slot = this.slotsSalida.get(nSlot);
 			slot.setBufferString(buffers.get(i), slot);
 		}
-		this.buffers = new ArrayList<String>();
 
 	}
 
@@ -58,15 +66,15 @@ public class Correlator extends Task {
 
 	@Override
 	public void setBufferString(String bufferAux, Slot s) {
-		this.buffers.add(bufferAux);
+		getBuffers().add(bufferAux);
 		this.nSlotEntrada.add(this.slotsEntrada.indexOf(s));
 	}
 
 	@Override
 	public String getBufferString() {
 		String aux = "";
-		for (int i = 0; i < buffers.size(); i++) {
-			aux = aux + buffers.get(i) + " posicion: " + nSlotEntrada.get(i) + " ";
+		for (int i = 0; i < getBuffers().size(); i++) {
+			aux = aux + getBuffers().get(i) + " posicion: " + nSlotEntrada.get(i) + " ";
 		}
 		return aux;
 	}
@@ -81,7 +89,7 @@ public class Correlator extends Task {
 		this.slotsSalida.add(s);
 	}
 
-	//espera hasta tener el mismo numero de mensajes de cada puerto de entrada
+	// espera hasta tener el mismo numero de mensajes de cada puerto de entrada
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		if (!this.isEntradaMensaje()) {
@@ -93,11 +101,11 @@ public class Correlator extends Task {
 			listaConteo.add(0);
 		}
 
-		for (int i = 0; i < buffers.size(); i++) {
+		for (int i = 0; i < getBuffers().size(); i++) {
 			int nSlot = nSlotEntrada.get(i);
 			listaConteo.set(nSlot, listaConteo.get(nSlot) + 1);
 		}
-		
+
 		for (int i = 0; i < listaConteo.size(); i++) {
 			//System.out.println("conteo posicion "+i+": "+listaConteo.get(i));
 		}
@@ -112,6 +120,13 @@ public class Correlator extends Task {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffers(new ArrayList<String>()); 
+		this.nSlotEntrada = new ArrayList<Integer>();
 	}
 
 }

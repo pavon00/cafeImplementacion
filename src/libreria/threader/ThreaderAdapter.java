@@ -23,6 +23,7 @@ public abstract class ThreaderAdapter extends Thread {
 						p.setEjecutandoProceso(true);
 					}
 					realizarAccion();
+					clearBuffer();
 					for (Slot s : getSlotsSalida()) {
 						s.getSalida().setEntradaMensaje(true);
 					}
@@ -59,6 +60,8 @@ public abstract class ThreaderAdapter extends Thread {
 	public abstract void setSlotSalida(Slot s);
 
 	public abstract ArrayList<Slot> getSlotsSalida();
+	
+	public abstract void clearBuffer();
 
 	public abstract void setBufferString(String string, Slot s);
 

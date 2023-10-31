@@ -1,5 +1,7 @@
 package libreria.threader.port;
 
+import libreria.Connector;
+
 public interface FactoryPort {
-	public Port crear(String ruta);
+	public Port crear(Connector con, String ruta);
 }

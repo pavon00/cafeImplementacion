@@ -51,11 +51,11 @@ public class Replicator extends Task {
 		setBuffers(buffersAux);
 	}
 
-	public ArrayList<String> getBuffers() {
+	public synchronized ArrayList<String> getBuffers() {
 		return buffers;
 	}
 
-	public void setBuffers(ArrayList<String> buffers) {
+	public synchronized void setBuffers(ArrayList<String> buffers) {
 		this.buffers = buffers;
 	}
 
@@ -76,7 +76,6 @@ public class Replicator extends Task {
 				slot.setBufferString(string, slot);
 			}
 		}
-		this.buffers = new ArrayList<String>();
 
 	}
 
@@ -95,5 +94,11 @@ public class Replicator extends Task {
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		return this.isEntradaMensaje();
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffers(new ArrayList<String>());
 	}
 }

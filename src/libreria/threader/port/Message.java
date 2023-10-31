@@ -3,6 +3,8 @@ package libreria.threader.port;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,28 +31,28 @@ import libreria.Util;
 public class Message {
 	// esta clase tiene el buffer de datos
 
-	private String buffer;
+	private ArrayList<String> buffer;
 	private Port port;
 
 	public Message(Port port) {
+		buffer = new ArrayList<String>();
 		this.setPort(port);
 	}
 
 	public Message() {
-		this.buffer = "";
+		buffer = new ArrayList<String>();
 	}
 
-	public String getBuffer() {
+	public synchronized ArrayList<String> getBuffer() {
 		return buffer;
 	}
 
 	public void setBuffer(String buffer) {
-		this.buffer = buffer;
+		this.buffer.add(buffer);
 	}
 
-	@Override
-	public String toString() {
-		return this.buffer;
+	public synchronized void setBuffers(ArrayList<String> buffer) {
+		this.buffer = buffer;
 	}
 
 	public static String getXML(String ruta, String xPathExpression) {
@@ -79,12 +81,6 @@ public class Message {
 			return "";
 		}
 	}
-
-	public void documentToString(Document documento) throws XPathExpressionException, ParserConfigurationException,
-			SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
-		this.buffer = Util.convertDocumentToString(documento,"/");
-	}
-
 	public Port getPort() {
 		return this.port;
 	}

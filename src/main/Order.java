@@ -3,8 +3,6 @@ package main;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 
 import libreria.Connector;
 import libreria.Process;
@@ -18,28 +16,24 @@ public class Order {
 	}
 	
 	public void leerFichero(String ruta) {
-		Process p = Process.getInstance();
-		ReentrantLock lock = p.getLock();
-		Condition c = p.getColaProcesos();
-		try {
-			lock.lock();
-		} finally {
-			while (p.isEjecutandoProceso()) {
-				try {
-					c.await();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+		connector.setFuncion(() -> {
+			Process p = Process.getInstance();
 			p.setEjecutandoProceso(true);
 			String buffer = leerFichero(ruta, this);
 			if (buffer != null) {
 				this.connector.getPort().setBufferString(buffer);
 				connector.notificar();
 			}
-			lock.unlock();
-		}
+        });
+		connector.ejecutar();
+	}
+	
+	public void terminar() {
+		connector.setFuncion(() -> {
+			Process p = Process.getInstance();
+			p.setTerminar(true);
+        });
+		connector.ejecutar();
 	}
 
 	private static String leerFichero(String ruta, Order order) {

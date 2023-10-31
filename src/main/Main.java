@@ -21,17 +21,25 @@ public class Main {
 		getProcess(orderConnector, waiterConnector, BaristaColdConnector, BaristaHotConnector).ejecutar();
 		
 		Order order = new Order(orderConnector);
-		for (int i = 0; i < 2; i++) {
-			order.leerFichero("order9.xml");
-			
-		}
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Process.getInstance().setTerminar(true);
+		
+		Waiter waiter = new Waiter(waiterConnector);
+		waiter.escribirFichero("waiter.xml");
+		Barista baristaHot = new Barista(BaristaHotConnector);
+		Barista baristaCold = new Barista(BaristaColdConnector);
+		baristaHot.procesarInformacion();
+		baristaCold.procesarInformacion();
+
+		order.leerFichero("order1.xml");
+		order.leerFichero("order2.xml");
+		order.leerFichero("order3.xml");
+		order.leerFichero("order4.xml");
+		order.leerFichero("order5.xml");
+		order.leerFichero("order6.xml");
+		order.leerFichero("order7.xml");
+		order.leerFichero("order8.xml");
+		order.leerFichero("order9.xml");
+		
+		order.terminar();
 		
 		
 		try {
@@ -50,8 +58,8 @@ public class Main {
 		distributor.direccionar(0, "/drink[type='cold']");
 		Replicator replicator1 = new Replicator();
 		Replicator replicator2 = new Replicator();
-		Translator translator1 = new Translator("<status>sin terminar</status>");
-		Translator translator2 = new Translator("<status>sin terminar</status>");
+		Translator translator1 = new Translator();
+		Translator translator2 = new Translator();
 		Correlator correlator1 = new Correlator();
 		Correlator correlator2 = new Correlator();
 		ContextEnricher contextEnricher1 = new ContextEnricher();

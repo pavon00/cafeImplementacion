@@ -5,28 +5,22 @@ import java.util.ArrayList;
 import libreria.Slot;
 
 /*
- * Transforma el cuerpo de un mensaje de un esquema a otro
- * Entradas: 1, Salidas: 1
+ * Distribuye los mensajes de entrada hacia las salidas
+ * Entradas: 1, Salidas: n
+ * 
+ * Hecho
  * 
 */
 
 public class Translator extends Task {
 
-	private String buffer;
-	private Slot slotEntrada, slotSalida;
-	private String addString;
+	private ArrayList<String> buffers;
+	private ArrayList<Slot> slotsSalida;
+	private Slot slotEntrada;
 
-	public Translator(String addString) {
-		this.addString = addString;
-	}
-
-	@Override
-	public void realizarAccion() {
-		super.realizarAccion();
-		String buff = anyadirMensajeContextoACuerpo(addString, this.getBufferString());
-		if (buff != null) {
-			slotSalida.setBufferString(buff, slotSalida);
-		}
+	public Translator() {
+		setBuffers(new ArrayList<String>());
+		this.slotsSalida = new ArrayList<Slot>();
 	}
 
 	@Override
@@ -46,19 +40,43 @@ public class Translator extends Task {
 	@Override
 	public ArrayList<Slot> getSlotsSalida() {
 		// TODO Auto-generated method stub
-		ArrayList<Slot> aux = new ArrayList<Slot>();
-		aux.add(this.slotSalida);
+		return this.slotsSalida;
+	}
+
+	@Override
+	public void setBufferString(String buffer, Slot s) {
+		System.out.println("elemento: " + buffer);
+		ArrayList<String> buffersAux = getBuffers();
+		buffersAux.add(buffer);
+		setBuffers(buffersAux);
+	}
+
+	public synchronized ArrayList<String> getBuffers() {
+		return buffers;
+	}
+
+	public synchronized void setBuffers(ArrayList<String> buffers) {
+		this.buffers = buffers;
+	}
+
+	@Override
+	public String getBufferString() {
+		String aux = "";
+		for (String string : buffers) {
+			aux = aux + string;
+		}
 		return aux;
 	}
 
-	public String anyadirMensajeContextoACuerpo(String mensaje, String xml) {
-		if (xml ==null || mensaje == null || xml.isEmpty() || mensaje.isEmpty()) {
-			return null;
+	@Override
+	public void realizarAccion() {
+		super.realizarAccion();
+		for (Slot slot : this.slotsSalida) {
+			for (String string : buffers) {
+				slot.setBufferString(string, slot);
+			}
 		}
-		int indice = xml.indexOf('>');
-		String primeraParte = xml.substring(0, indice + 1);
-		String segundaParte = xml.substring(indice + 1);
-		return primeraParte + mensaje + segundaParte;
+
 	}
 
 	@Override
@@ -69,23 +87,17 @@ public class Translator extends Task {
 
 	@Override
 	public void setSlotSalida(Slot s) {
-		this.slotSalida = s;
-	}
-
-	@Override
-	public void setBufferString(String buffer, Slot s) {
-		// TODO Auto-generated method stub
-		this.buffer = buffer;
-	}
-
-	@Override
-	public String getBufferString() {
-		// TODO Auto-generated method stub
-		return this.buffer;
+		this.slotsSalida.add(s);
 	}
 
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		return this.isEntradaMensaje();
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffers(new ArrayList<String>());
 	}
 }

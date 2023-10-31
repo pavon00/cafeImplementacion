@@ -33,7 +33,6 @@ public class Aggregator extends Task {
 		super.realizarAccion();
 		String bufferAux = aggregatorTarea();
 		slotSalida.setBufferString(bufferAux, slotSalida);
-		setBuffers(new ArrayList<String>());
 	}
 	
 	@Override
@@ -65,7 +64,7 @@ public class Aggregator extends Task {
 
 	public String aggregatorTarea() {
 		String bufferAux = "";
-		for (String string : buffers) {
+		for (String string : getBuffers()) {
 			bufferAux = bufferAux + string;
 		}
 		for (String string : nodoPadre) {
@@ -92,11 +91,11 @@ public class Aggregator extends Task {
 		setBuffers(buffersAux);
 	}
 
-	public ArrayList<String> getBuffers() {
+	public synchronized ArrayList<String> getBuffers() {
 		return buffers;
 	}
 
-	public void setBuffers(ArrayList<String> buffers) {
+	public synchronized void setBuffers(ArrayList<String> buffers) {
 		this.buffers = buffers;
 	}
 
@@ -118,6 +117,12 @@ public class Aggregator extends Task {
 	@Override
 	public void setSlotSalida(Slot s) {
 		this.slotSalida = s;
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffers(new ArrayList<String>());
 	}
 
 }

@@ -105,4 +105,10 @@ public class Splitter extends Task {
 		return this.isEntradaMensaje();
 	}
 
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

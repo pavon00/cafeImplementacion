@@ -8,11 +8,16 @@ import libreria.threader.port.Port;
 
 public class Connector {
 	
+	public interface ConnectorFuncion {
+	    void ejecutar();
+	}
+	
 	public enum Tipo {
 		Entrada, Salida, Sol;
 	}
 	
 	private Port port;
+	private ConnectorFuncion funcion;
 	private FactoryEntryPort factoryEntryPort;
 	private FactoryExitPort factoryExitPort;
 	private FactorySolPort factorySolPort;
@@ -21,17 +26,17 @@ public class Connector {
 		switch (t) {
 		case Entrada:
 			factoryEntryPort = new FactoryEntryPort();
-			this.port = factoryEntryPort.crear(ruta);
+			this.port = factoryEntryPort.crear(this, ruta);
 			this.port.setConnector(this);
 			break;
 		case Salida:
 			factoryExitPort = new FactoryExitPort();
-			this.port = factoryExitPort.crear(ruta);
+			this.port = factoryExitPort.crear(this, ruta);
 			this.port.setConnector(this);
 			break;
 		case Sol:
 			factorySolPort = new FactorySolPort();
-			this.port = factorySolPort.crear(ruta);
+			this.port = factorySolPort.crear(this, ruta);
 			this.port.setConnector(this);
 			break;
 
@@ -39,6 +44,10 @@ public class Connector {
 			break;
 		}
 
+	}
+	
+	public void ejecutar() {
+		this.port.ejecutar();
 	}
 	
 	public void notificar() {
@@ -53,6 +62,14 @@ public class Connector {
 
 	public void setPort(Port p) {
 		this.port = p;
+	}
+
+	public ConnectorFuncion getFuncion() {
+		return funcion;
+	}
+
+	public void setFuncion(ConnectorFuncion funcion) {
+		this.funcion = funcion;
 	}
 
 }

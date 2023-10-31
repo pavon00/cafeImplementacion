@@ -14,6 +14,23 @@ import libreria.Slot;
 public class ContextEnricher extends Task {
 
 	private ArrayList<String> buffersEntrada, buffersContexto;
+	public synchronized ArrayList<String> getBuffersEntrada() {
+		return buffersEntrada;
+	}
+
+	public synchronized void setBuffersEntrada(ArrayList<String> buffersEntrada) {
+		this.buffersEntrada = buffersEntrada;
+	}
+
+	public synchronized ArrayList<String> getBuffersContexto() {
+		return buffersContexto;
+	}
+
+	public synchronized void setBuffersContexto(ArrayList<String> buffersContexto) {
+		this.buffersContexto = buffersContexto;
+	}
+
+
 	private Slot slotEntrada, slotContexto, slotSalida;
 
 	public ContextEnricher() {
@@ -24,10 +41,10 @@ public class ContextEnricher extends Task {
 	@Override
 	public void setBufferString(String bufferAux, Slot s) {
 		if (s.equals(slotEntrada)) {
-			buffersEntrada.add(bufferAux);
+			getBuffersEntrada().add(bufferAux);
 		}
 		if (s.equals(slotContexto)) {
-			buffersContexto.add(bufferAux);
+			getBuffersContexto().add(bufferAux);
 		}
 	}
 
@@ -57,11 +74,11 @@ public class ContextEnricher extends Task {
 	@Override
 	public String getBufferString() {
 		String aux1 = "";
-		for (String string : buffersEntrada) {
+		for (String string : getBuffersEntrada()) {
 			aux1 = aux1 + string;
 		}
 		String aux2 = "";
-		for (String string : buffersContexto) {
+		for (String string : getBuffersContexto()) {
 			aux2 = aux2 + string;
 		}
 		return aux1 + aux2;
@@ -70,16 +87,14 @@ public class ContextEnricher extends Task {
 	@Override
 	public void realizarAccion() {
 		super.realizarAccion();
-		for (int i = 0; i < buffersContexto.size(); i++) {
-			String contextBuff = buffersContexto.get(i);
-			String entradaBuff = buffersEntrada.get(i);
+		for (int i = 0; i <  getBuffersContexto().size(); i++) {
+			String contextBuff =  getBuffersContexto().get(i);
+			String entradaBuff = getBuffersEntrada().get(i);
 			String buff = anyadirMensajeContextoACuerpo(contextBuff, entradaBuff);
 			if (buff != null) {
 				slotSalida.setBufferString(buff, slotSalida);
 			}
 		}
-		this.buffersEntrada = new ArrayList<String>();
-		this.buffersContexto = new ArrayList<String>();
 
 	}
 
@@ -111,6 +126,13 @@ public class ContextEnricher extends Task {
 	@Override
 	public boolean nodosEntradaHanMandadoMensaje() {
 		return this.isEntradaMensaje();
+	}
+
+	@Override
+	public void clearBuffer() {
+		// TODO Auto-generated method stub
+		setBuffersEntrada(new ArrayList<String>());
+		setBuffersContexto(new ArrayList<String>());
 	}
 
 }
