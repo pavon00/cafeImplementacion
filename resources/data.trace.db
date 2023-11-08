@@ -1,0 +1,594 @@
+2023-11-08 22:16:32.120862+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:16:32.120862+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:16:32.177772+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:16:32.177772+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:16:32.200299+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:16:32.253901+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:16:32.254898+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:16:32.287021+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:16:32.337064+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:16:32.337064+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:16:32.399352+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:16:32.399352+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:16:32.431224+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:16:32.464229+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:16:32.524841+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:16:32.524841+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:16:32.561564+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:16:32.561564+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:16:32.595479+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:16:32.651088+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:16:32.684998+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:16:32.714919+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:16:32.778425+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:16:32.813325+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:16:32.846593+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:16:32.877137+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:16:32.907509+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:16:32.941198+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:16:33.006718+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:16:33.039223+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:16:33.071322+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:16:33.103714+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:16:33.143124+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:17:43.995262+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:17:43.995262+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:17:44.070851+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:17:44.070851+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:17:44.101807+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:17:44.154946+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:17:44.156941+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:17:44.189374+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:17:44.241718+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:17:44.241718+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:17:44.305548+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:17:44.305548+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:17:44.336471+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:17:44.365246+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:17:44.420258+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:17:44.420258+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:17:44.452385+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:17:44.452385+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:17:44.485305+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:17:44.539740+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:17:44.572652+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:17:44.602765+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:17:44.667968+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:17:44.701336+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:17:44.732900+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:17:44.768506+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:17:44.804282+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:17:44.861188+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:17:44.926965+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:17:44.961426+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:17:44.996727+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:17:45.031438+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:17:45.063568+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:19:07.765256+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:07.765256+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:07.845012+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:07.845012+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:07.878472+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:19:07.930779+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:07.931776+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:07.965685+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:08.020718+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:08.020718+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:19:08.080598+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:08.080598+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:08.115119+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:08.150622+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:08.217989+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:08.217989+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:08.251010+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:08.251010+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:19:08.284919+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:19:08.339108+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:08.369040+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:08.399782+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:19:08.466053+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:19:08.500489+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:08.532425+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:08.565034+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:08.596995+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:08.632609+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:08.696202+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:08.731123+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:08.768492+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:08.805075+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:19:08.842044+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:19:55.349989+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:55.349989+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:55.428513+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:55.428513+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:55.461641+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:19:55.515754+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:55.515754+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:55.549924+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:55.598555+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:55.598555+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:19:55.657791+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:55.657791+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:55.689192+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:55.718870+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:55.781135+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:55.781135+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:55.818677+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:19:55.818677+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:55.854187+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:19:55.915078+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:55.948016+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:55.982656+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:19:56.055866+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:19:56.088899+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:56.120383+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:19:56.165747+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:56.203736+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:19:56.242665+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:19:56.304259+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:56.344925+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:19:56.380411+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:19:56.415318+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:19:56.445857+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:20:54.733294+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:20:54.733294+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:20:54.802617+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:20:54.802617+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:20:54.835534+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:20:54.888218+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:20:54.888218+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:20:54.926296+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:20:54.975234+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:20:54.975234+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:20:55.030368+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:20:55.031336+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:20:55.061276+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:20:55.093010+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:20:55.153219+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:20:55.154217+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:20:55.187650+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:20:55.187650+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:20:55.222553+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:20:55.276035+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:20:55.308947+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:20:55.343887+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:20:55.406746+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:20:55.437307+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:20:55.468603+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:20:55.498215+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:20:55.538623+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:20:55.569780+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:20:55.651088+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:20:55.686226+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:20:55.742005+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:20:55.789509+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:20:55.845458+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:21:32.285755+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:21:32.285755+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:21:32.374944+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:21:32.374944+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:21:32.413839+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:21:32.473459+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:21:32.473459+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:21:32.509492+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:21:32.567814+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
+2023-11-08 22:21:32.567814+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:21:32.629634+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:21:32.629634+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:21:32.664600+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:21:32.701628+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:21:32.773435+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:21:32.773435+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:21:32.805351+01:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:21:32.805351+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:21:32.838435+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:21:32.892803+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:21:32.925715+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:21:32.965838+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:21:33.032625+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cerveza' [42104-224]
+2023-11-08 22:21:33.063265+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:21:33.093126+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'guarana' [42104-224]
+2023-11-08 22:21:33.125167+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:21:33.156385+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tonica' [42104-224]
+2023-11-08 22:21:33.187065+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'coca-cola' [42104-224]
+2023-11-08 22:21:33.251167+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:21:33.283081+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'cafe' [42104-224]
+2023-11-08 22:21:33.315055+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'te' [42104-224]
+2023-11-08 22:21:33.347950+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'tila' [42104-224]
+2023-11-08 22:21:33.381635+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BEBIDAS" not found (this database is empty); SQL statement:
+SELECT hay_stock FROM bebidas WHERE nombre = 'chocolate' [42104-224]
