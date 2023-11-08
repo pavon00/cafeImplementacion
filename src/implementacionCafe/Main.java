@@ -1,6 +1,11 @@
 package implementacionCafe;
 
 import libreria.Process;
+
+import java.sql.SQLException;
+
+import org.h2.tools.Server;
+
 import implementacionCafe.clases.Barista;
 import implementacionCafe.clases.Order;
 import implementacionCafe.clases.Waiter;
@@ -16,13 +21,13 @@ import libreria.threader.task.Splitter;
 import libreria.threader.task.Translator;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		Connector orderConnector = new Connector(Tipo.Entrada);
 		Connector waiterConnector = new Connector(Tipo.Salida);
 		Connector BaristaColdConnector = new Connector(Tipo.Sol);
 		Connector BaristaHotConnector = new Connector(Tipo.Sol);
+		Server server = Server.createTcpServer().start();
 		getProcess(orderConnector, waiterConnector, BaristaColdConnector, BaristaHotConnector).ejecutar();
-
 		Order order = new Order(orderConnector);
 
 		Waiter waiter = new Waiter(waiterConnector);
@@ -51,6 +56,7 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		server.stop();
 	}
 
 	//añade los puertos de los conectores pasados por parametro y task a proceso y lo devuelve

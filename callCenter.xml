@@ -1,0 +1,30 @@
+<registro>
+	<llamadas>
+		<llamada>
+			<tipo>privada</tipo>
+			<telefonoOrigen>666666666</telefonoOrigen>
+			<telefonoDestino>676666666</telefonoDestino>
+			<coste>3</coste>
+			<duracion>4</duracion>
+		</llamada>
+		<llamada>
+			<telefonoOrigen>666666666</telefonoOrigen>
+			<telefonoDestino>656666666</telefonoDestino>
+			<coste>20</coste>
+			<duracion>100</duracion>
+		</llamada>
+		<llamada>
+			<telefonoOrigen>766666666</telefonoOrigen>
+			<telefonoDestino>666666666</telefonoDestino>
+			<coste>5</coste>
+			<duracion>14</duracion>
+		</llamada>
+		<llamada>
+			<tipo>publico</tipo>
+			<telefonoOrigen>666666666</telefonoOrigen>
+			<telefonoDestino>666666665</telefonoDestino>
+			<coste>1</coste>
+			<duracion>2</duracion>
+		</llamada>
+	</llamadas>
+</registro>
